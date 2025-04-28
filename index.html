@@ -19,11 +19,77 @@
       --color-primary-light: #8A5CFF;
       --color-text-gray: #A1A1AA;
     }
+
+    /* Add these viewport fixes */
+    html, body {
+      width: 100%;
+      min-height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      -webkit-text-size-adjust: 100%;
+      -webkit-tap-highlight-color: transparent;
+    }
     
     html {
       scroll-behavior: smooth;
     }
     
+    body {
+      font-family: "Plus Jakarta Sans", sans-serif;
+      background: var(--color-background);
+      min-width: 320px; /* Prevent content from becoming too narrow */
+    }
+
+    /* Ensure content fits viewport */
+    [class*="max-w-"] {
+      width: 100%;
+      max-width: 1280px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    @media (max-width: 640px) {
+      [class*="max-w-"] {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+      }
+    }
+
+    /* Fix for spline viewer container on mobile */
+    .spline-container {
+      width: 100%;
+      height: 400px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+      background: transparent;
+      max-width: 100vw;
+      overflow: hidden;
+    }
+
+    @media (max-width: 768px) {
+      .spline-container {
+        height: 400px;
+      }
+      
+      .grid {
+        gap: 1rem !important;
+      }
+      
+      h1 {
+        font-size: 2.5rem !important;
+        line-height: 1.2 !important;
+      }
+      
+      section {
+        padding-top: 3rem !important;
+        padding-bottom: 3rem !important;
+      }
+    }
+
     body {
       font-family: "Plus Jakarta Sans", sans-serif;
       background: var(--color-background);
@@ -176,15 +242,6 @@
       );
     }
 
-    .spline-container {
-      width: 100%;
-      height: 500px;
-      margin: 0 auto;
-      position: relative;
-      z-index: 1;
-      background: transparent;
-    }
-
     spline-viewer {
       width: 100%;
       height: 100%;
@@ -245,6 +302,67 @@
       background-color: rgba(108, 76, 241, 0.1);
     }
 
+    input[type="date"] {
+      position: relative;
+      cursor: pointer;
+    }
+
+    /* Custom calendar dropdown styles */
+    input[type="date"]::-webkit-calendar-picker-indicator {
+      position: absolute;
+      right: 1rem;
+      padding: 0;
+      cursor: pointer;
+      filter: invert(1);
+      opacity: 0.5;
+      transition: opacity 0.3s ease;
+    }
+
+    input[type="date"]::-webkit-calendar-picker-indicator:hover {
+      opacity: 0.8;
+    }
+
+    input[type="date"]::-webkit-datetime-edit {
+      color: white;
+    }
+
+    input[type="date"]::-webkit-datetime-edit-fields-wrapper {
+      padding: 0;
+    }
+
+    input[type="date"]::-webkit-datetime-edit-text {
+      padding: 0 0.3em;
+      color: var(--color-text-gray);
+    }
+
+    input[type="date"]::-webkit-datetime-edit-month-field,
+    input[type="date"]::-webkit-datetime-edit-day-field,
+    input[type="date"]::-webkit-datetime-edit-year-field {
+      color: white;
+    }
+
+    input[type="date"]:invalid {
+      color: var(--color-text-gray);
+    }
+
+    /* Date error message styles */
+    .date-error {
+      color: #ef4444;
+      font-size: 0.875rem;
+      margin-top: 0.5rem;
+      display: none;
+    }
+
+    .date-error.active {
+      display: block;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-5px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     input[type="date"]::-webkit-calendar-picker-indicator {
       filter: invert(1);
       opacity: 0.5;
@@ -297,6 +415,107 @@
 
     .checkmark-icon {
       animation: checkmark 0.5s ease-in-out forwards;
+    }
+
+    /* Enhanced text effects */
+    .gradient-text {
+      background: linear-gradient(to right, #fff, #8A5CFF);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: gradientFlow 8s linear infinite;
+    }
+
+    .hero-title {
+      position: relative;
+      animation: float 10s ease-in-outinfinite;
+    }
+
+    .hero-title span {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.8s ease forwards;
+    }
+
+    .hero-title span:nth-child(1) { animation-delay: 0.1s; }
+    .hero-title span:nth-child(2) { animation-delay: 0.2s; }
+    .hero-title span:nth-child(3) { animation-delay: 0.3s; }
+    .hero-title span:nth-child(4) { animation-delay: 0.4s; }
+
+    .text-glow {
+      text-shadow: 0 0 20px rgba(138, 92, 255, 0.5),
+                   0 0 40px rgba(138, 92, 255, 0.3),
+                   0 0 60px rgba(138, 92, 255, 0.1);
+    }
+
+    .text-shine {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .text-shine::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+      );
+      animation: shine 3s infinite;
+    }
+
+    @keyframes shine {
+      100% { left: 200%; }
+    }
+
+    @keyframes gradientFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .hero-description {
+      position: relative;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.8s ease forwards 0.5s;
+    }
+
+    .hero-buttons {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.8s ease forwards 0.7s;
+    }
+
+    /* Enhanced gradient background */
+    .hero-gradient {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(
+        circle at 50% 50%,
+        rgba(138, 92, 255, 0.1) 0%,
+        rgba(108, 76, 241, 0.05) 50%,
+        transparent 100%
+      );
+      filter: blur(60px);
+      opacity: 0.8;
+      animation: pulse 8s ease infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.8; }
+      50% { opacity: 0.4; }
     }
   </style>
   <script>
@@ -408,6 +627,67 @@
           }
         });
       }
+
+      // Date validation setup
+      const deadlineInput = document.querySelector('input[name="deadline"]');
+      if (deadlineInput) {
+        // Set min date to today
+        const today = new Date();
+        const yyyy = today.getFullYear();
+        const mm = String(today.getMonth() + 1).padStart(2, '0');
+        const dd = String(today.getDate()).padStart(2, '0');
+        const todayString = `${yyyy}-${mm}-${dd}`;
+        deadlineInput.min = todayString;
+        
+        // Create error message element
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'date-error';
+        errorDiv.textContent = 'The deadline must be today or later';
+        deadlineInput.parentNode.appendChild(errorDiv);
+
+        // Add validation on input change
+        deadlineInput.addEventListener('input', function() {
+          const selectedDate = new Date(this.value);
+          const today = new Date();
+          today.setHours(0, 0, 0, 0); // Reset time part for accurate date comparison
+
+          if (selectedDate < today) {
+            errorDiv.classList.add('active');
+            this.value = ''; // Clear invalid date
+            this.classList.add('border-red-500');
+          } else {
+            errorDiv.classList.remove('active');
+            this.classList.remove('border-red-500');
+          }
+        });
+
+        // Update form submission validation
+        const form = document.getElementById('contactForm');
+        if (form) {
+          const originalSubmitHandler = form.onsubmit;
+          form.onsubmit = function(e) {
+            e.preventDefault();
+            
+            const deadlineValue = deadlineInput.value;
+            if (deadlineValue) {
+              const selectedDate = new Date(deadlineValue);
+              const today = new Date();
+              today.setHours(0, 0, 0, 0);
+
+              if (selectedDate < today) {
+                errorDiv.classList.add('active');
+                deadlineInput.classList.add('border-red-500');
+                return false;
+              }
+            }
+
+            // Continue with the original submit handler logic
+            return originalSubmitHandler ? originalSubmitHandler.call(this, e) : true;
+          };
+        }
+      }
+
+      // ... rest of existing code ...
     });
 
     function nextStep() {
@@ -461,17 +741,36 @@
       overlay.classList.remove('active');
       card.classList.remove('active');
     }
+
+    function showTermsModal(event) {
+      event.preventDefault();
+      const modal = document.getElementById('termsModal');
+      if (modal) {
+        modal.classList.remove('hidden');
+      }
+    }
+
+    function hideTermsModal() {
+      const modal = document.getElementById('termsModal');
+      if (modal) {
+        modal.classList.add('hidden');
+      }
+    }
+
+    function acceptTerms() {
+      hideTermsModal();
+    }
   </script>
 </head>
 <body class="text-white overflow-x-hidden">
   <div class="scroll-progress"></div>
   
   <!-- Navbar -->
-  <header class="fixed w-full z-50 bg-black/80 backdrop-blur-md border-b border-purple-900/20">
+  <header class="fixed w-full z-50 bg-black/20 backdrop-blur-xl border-b border-purple-900/10 transition-all duration-300">
     <nav aria-label="Primary Navigation" class="max-w-[1280px] mx-auto flex items-center justify-between px-6 py-2">
       <div class="flex items-center justify-between w-full gap-8">
         <a class="flex items-center" href="#home">
-          <img alt="Projectory logo" class="h-16 w-auto object-contain hover:opacity-90 transition-opacity" src="1logo.png"/>
+          <img alt="Projectory logo" class="h-16 w-auto object-contain hoer:opacity-90 transition-opacity" src="images/1logo.png"/>
         </a>
         <ul class="hidden md:flex space-x-8 text-sm font-normal">
           <li><a class="text-white hover:text-purple-400 transition-colors" href="#home">Home</a></li>
@@ -488,26 +787,28 @@
 
   <!-- Hero Section -->
   <section id="home" class="relative py-16">
+    <div class="hero-gradient"></div>
     <div class="absolute inset-0 overflow-hidden pointer-events-none">
       <div class="absolute w-[800px] h-[800px] -top-[400px] -right-[400px] rounded-full bg-purple-600/20 blur-[120px]"></div>
       <div class="absolute w-[600px] h-[600px] top-[20%] -left-[300px] rounded-full bg-purple-600/20 blur-[100px]"></div>
     </div>
     
     <div class="max-w-[1280px] mx-auto px-6 py-8 text-center relative reveal hero-content">
-
-      <h1 class="text-5xl md:text-7xl font-normal leading-tight mb-6">
-        We Build What You Imagine<br/>
-        <span class="text-purple-400">Projects Made Easy.</span>
+      <h1 class="hero-title text-5xl md:text-7xl font-normal leading-tight mb-6">
+        <span class="inline-block">We Build</span> 
+        <span class="inline-block">What You</span> 
+        <span class="inline-block">Imagine</span><br/>
+        <span class="text-shine gradient-text text-glow">Projects Made Easy.</span>
       </h1>
-      <p class="text-gray-400 text-lg max-w-2xl mx-auto mb-8">
+      <p class="hero-description text-gray-400 text-lg max-w-2xl mx-auto mb-8">
         Get your projects done at the price of a pizza<br/>
         Stay ahead by enhancing your resume with high-quality projects
       </p>
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-        <a href="#contact" class="w-full sm:w-auto bg-gradient-to-r from-purple-600 to-purple-400 rounded-xl px-8 py-3 text-white font-medium hover:brightness-110 transition">
+      <div class="hero-buttons flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="#contact" class="w-full sm:w-auto bg-gradient-to-r from-purple-600 to-purple-400 rounded-xl px-8 py-3 text-white font-medium hover:brightness-110 transition transform hover:scale-105 duration-300">
           Connect With Us
         </a>
-        <a href="#pricing" class="w-full sm:w-auto bg-white/10 backdrop-blur rounded-xl px-8 py-3 text-white font-medium hover:bg-white/20 transition">
+        <a href="#pricing" class="w-full sm:w-auto bg-white/10 backdrop-blur rounded-xl px-8 py-3 text-white font-medium hover:bg-white/20 transition transform hover:scale-105 duration-300">
           View Pricing
         </a>
       </div>
@@ -685,7 +986,7 @@
           <i class="fas fa-headset"></i>
           <span>Connect With Us</span>
         </div>
-        <h2 class="text-4xl md:text-6xl font-bold mt-6 mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-white/80">
+        <h2 class="text-4xl md:text-6xl font-bold mt-6 mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-white/80 leading-tight md:leading-tight">
           Let's Start Building Your Project
         </h2>
         <p class="text-[#A1A1AA] text-lg max-w-2xl mx-auto mt-4">
@@ -761,13 +1062,19 @@
 
           <div class="mb-6">
             <label class="block text-sm text-[#A1A1AA] mb-2">Project Deadline*</label>
-            <input type="date" name="deadline" class="w-full bg-black/40 border border-purple-500/20 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-purple-500 form-input" required>
+            <input 
+              type="date" 
+              name="deadline" 
+              class="w-full bg-black/40 border border-purple-500/20 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-purple-500 form-input transition-all duration-300" 
+              required
+              placeholder="Select a deadline date"
+            >
           </div>
 
           <div class="mb-8">
             <label class="flex items-center gap-2 cursor-pointer">
               <input type="checkbox" name="terms" class="w-4 h-4 rounded border-purple-500/20 text-purple-500 focus:ring-purple-500" required>
-              <span class="text-sm text-gray-400">I agree to the Terms and Conditions*</span>
+              <span class="text-sm text-gray-400">I agree to the <a href="#" class="text-[#6C4CF1] hover:text-[#8A5CFF] underline" onclick="showTermsModal(event)">Terms and Conditions</a>*</span>
             </label>
           </div>
 
@@ -783,6 +1090,146 @@
       </form>
     </div>
   </section>
+
+  <!-- Terms and Conditions Modal -->
+  <div id="termsModal" class="fixed inset-0 z-[1000] hidden">
+    <div class="absolute inset-0 bg-black/70 backdrop-blur-sm" onclick="hideTermsModal()"></div>
+    <div class="relative max-w-2xl mx-auto mt-20 bg-[#121212] border border-purple-500/20 rounded-2xl p-8 premium-card">
+      <div class="flex justify-between items-center mb-6">
+        <h3 class="text-2xl font-medium">Terms and Conditions</h3>
+        <button onclick="hideTermsModal()" class="text-gray-400 hover:text-white transition">
+          <i class="fas fa-times text-xl"></i>
+        </button>
+      </div>
+      
+      <div class="overflow-y-auto max-h-[60vh] pr-4 text-gray-400 space-y-6">
+        <section>
+          <h4 class="text-white text-lg font-medium mb-3">1. Services Provided</h4>
+          <p>Projectory offers custom software development services, including:</p>
+          <ul class="list-disc pl-6 mt-2 space-y-2">
+            <li>Web Applications</li>
+            <li>AI/ML Projects</li>
+            <li>Other tech-related services tailored to your needs</li>
+          </ul>
+        </section>
+        
+        <section>
+          <h4 class="text-white text-lg font-medium mb-3">2. Pricing and Payment</h4>
+          <p>The pricing for our services is as follows:</p>
+          <ul class="list-disc pl-6 mt-2 space-y-2">
+            <li>Standard Tier: ₹599</li>
+            <li>Premium Tier: ₹749</li>
+            <li>Advanced Tier: ₹899</li>
+          </ul>
+          <p class="mt-2">Payment Terms:</p>
+          <ul class="list-disc pl-6 mt-2 space-y-2">
+            <li>All payments are required upfront before the project begins</li>
+            <li>Payment is made via the accepted payment methods and is non-refundable once the project has started</li>
+          </ul>
+        </section>
+        
+        <section>
+          <h4 class="text-white text-lg font-medium mb-3">3. Project Delivery and Completion</h4>
+          <p>Project delivery times vary by service tier:</p>
+          <ul class="list-disc pl-6 mt-2 space-y-2">
+            <li>Standard Tier: Delivered within 7 days</li>
+            <li>Premium Tier: Delivered within 4-6 days</li>
+            <li>Advanced Tier: Delivered within 72 hours (fast-track)</li>
+          </ul>
+          <p class="mt-2">Revision terms by tier:</p>
+          <ul class="list-disc pl-6 mt-2 space-y-2">
+            <li>Standard Tier: 1 revision after delivery</li>
+            <li>Premium Tier: 2 revisions after delivery</li>
+            <li>Advanced Tier: Unlimited revisions within the project deadline</li>
+          </ul>
+        </section>
+        
+        <section>
+          <h4 class="text-white text-lg font-medium mb-3">4. Cancellation and Refund Policy</h4>
+          <ul class="list-disc pl-6 mt-2 space-y-2">
+            <li>No Refunds: Once the project is initiated, we do not offer refunds</li>
+            <li>Cancellation: If the project has not yet begun, you may cancel and receive a refund (minus any applicable fees)</li>
+          </ul>
+        </section>
+        
+        <section>
+          <h4 class="text-white text-lg font-medium mb-3">5. User Responsibilities</h4>
+          <p>As a user, you are required to:</p>
+          <ul class="list-disc pl-6 mt-2 space-y-2">
+            <li>Provide accurate, truthful, and complete information during registration and project submission</li>
+            <li>Not misuse the platform for illegal or harmful purposes</li>
+            <li>Take full responsibility for your use of the Service</li>
+          </ul>
+        </section>
+        
+        <section>
+          <h4 class="text-white text-lg font-medium mb-3">6. Privacy and Data Handling</h4>
+          <p>We take your privacy seriously. By using our services, you consent to the collection, use, and storage of your personal information as outlined in our Privacy Policy.</p>
+          <ul class="list-disc pl-6 mt-2 space-y-2">
+            <li>We will not share your data with third parties unless necessary to complete your project or as required by law</li>
+            <li>We implement strict security measures to protect your data</li>
+          </ul>
+        </section>
+        
+        <section>
+          <h4 class="text-white text-lg font-medium mb-3">7. Intellectual Property Rights</h4>
+          <ul class="list-disc pl-6 mt-2 space-y-2">
+            <li>Ownership: You retain ownership of all intellectual property rights to your project content</li>
+            <li>License: Upon full payment, we grant you a non-exclusive, non-transferable license to use the final project, including code, designs, and other deliverables</li>
+            <li>Project Showcase: We reserve the right to display your project in our portfolio and marketing materials unless you explicitly request otherwise</li>
+          </ul>
+        </section>
+        
+        <section>
+          <h4 class="text-white text-lg font-medium mb-3">8. Limitation of Liability</h4>
+          <p>Projectory's liability is limited to the amount you paid for the services. We are not liable for any indirect, incidental, or consequential damages, including:</p>
+          <ul class="list-disc pl-6 mt-2 space-y-2">
+            <li>Loss of profits</li>
+            <li>Loss of data or business</li>
+          </ul>
+        </section>
+
+        <section>
+          <h4 class="text-white text-lg font-medium mb-3">9. Disclaimers</h4>
+          <ul class="list-disc pl-6 mt-2 space-y-2">
+            <li>We make every effort to deliver high-quality projects, but we cannot guarantee a specific grade or outcome. Final evaluations are at the discretion of your institution or organization</li>
+            <li>We are not responsible for issues caused by third-party services or external components integrated into your project</li>
+            <li>Our services are provided "as is" with no express or implied warranties regarding their accuracy, reliability, or completeness</li>
+          </ul>
+        </section>
+
+        <section>
+          <h4 class="text-white text-lg font-medium mb-3">10. Governing Law</h4>
+          <p>These Terms are governed by the laws of India. Any disputes arising from the use of our services will be resolved in the courts located in India.</p>
+        </section>
+
+        <section>
+          <h4 class="text-white text-lg font-medium mb-3">11. Changes to the Terms</h4>
+          <p>We may update or modify these Terms at any time. Any significant changes will be notified to users. It is your responsibility to review these Terms regularly to stay informed of any updates.</p>
+        </section>
+
+        <section>
+          <h4 class="text-white text-lg font-medium mb-3">12. Contact Information</h4>
+          <p>If you have any questions or concerns regarding these Terms and Conditions, please contact us at:</p>
+          <p class="mt-2">Email: contact@projectory.in</p>
+        </section>
+
+        <section>
+          <h4 class="text-white text-lg font-medium mb-3">Final Notes</h4>
+          <ul class="list-disc pl-6 mt-2 space-y-2">
+            <li>By using our services, you acknowledge that you have read and agree to these Terms and Conditions</li>
+            <li>These Terms and Conditions are subject to change, and we advise you to regularly review this page</li>
+          </ul>
+        </section>
+      </div>
+      
+      <div class="mt-6 pt-6 border-t border-gray-700 flex justify-end">
+        <button onclick="acceptTerms()" class="bg-gradient-to-r from-[#6C4CF1] to-[#8A5CFF] rounded-xl px-6 py-3 text-white font-medium hover:brightness-110 transition">
+          I Accept
+        </button>
+      </div>
+    </div>
+  </div>
 
   <!-- Confirmation Card -->
   <div class="confirmation-overlay" onclick="hideConfirmationCard()"></div>
@@ -908,35 +1355,32 @@
 
     <div class="max-w-[1280px] mx-auto px-6">
       <!-- Footer Content -->
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
         <!-- Brand -->
-        <div class="col-span-1 md:col-span-2">
-          <img alt="Projectory logo" class="h-12 w-auto mb-4" src="1logo.png"/>
-          <p class="text-gray-400 max-w-sm">Get your projects done at the price of a pizza. Stay ahead by enhancing your resume with high-quality projects.</p>
-        </div>
-
-        <!-- Quick Links -->
-        <div>
-          <h3 class="text-white font-medium mb-4">Quick Links</h3>
-          <ul class="space-y-2">
-            <li><a href="#home" class="text-gray-400 hover:text-white transition">Home</a></li>
-            <li><a href="#pricing" class="text-gray-400 hover:text-white transition">Pricing</a></li>
-            <li><a href="#contact" class="text-gray-400 hover:text-white transition">Contact</a></li>
-            <li><a href="#faq" class="text-gray-400 hover:text-white transition">FAQ</a></li>
-          </ul>
+        <div class="flex flex-col items-start">
+          <!-- Logo -->
+          <div class="flex flex-col items-center md:items-start w-full mb-6">
+            <img alt="Projectory logo" class="h-12 w-auto mb-4" src="images/1logo.png" />
+            <p class="text-gray-400 text-center md:text-left">
+              Get your projects done at the price of a pizza.<br/>
+              Stay ahead by enhancing your resume with high-quality projects.
+            </p>
+          </div>
         </div>
 
         <!-- Contact Info -->
-        <div>
-          <h3 class="text-white font-medium mb-4">Contact</h3>
-          <ul class="space-y-2">
+        <div class="flex flex-col items-center md:items-end w-full">
+          <h3 class="text-white font-medium mb-4 text-center md:text-right">Contact Us</h3>
+          <ul class="space-y-3 text-center md:text-right">
             <li class="text-gray-400">
-              <a href="mailto:contact@projectory.com" class="hover:text-white transition">
-                <i class="far fa-envelope mr-2"></i>contact@projectory.in
+              <a href="mailto:contact@projectory.in" class="hover:text-white transition inline-flex items-center gap-2 flex-row-reverse md:flex-row">
+                <span>contact@projectory.in</span>
+                <i class="far fa-envelope"></i>
               </a>
             </li>
-            <li class="text-gray-400">
-              <i class="fas fa-phone-alt mr-2"></i>+91 6398917958
+            <li class="text-gray-400 inline-flex items-center gap-2 justify-center md:justify-end">
+              <span>+91 9027107868</span>
+              <i class="fas fa-phone-alt"></i>
             </li>
           </ul>
         </div>
@@ -949,18 +1393,15 @@
       <div class="flex flex-col md:flex-row justify-between items-center gap-4">
         <!-- Copyright -->
         <p class="text-gray-400 text-sm">&copy; 2025 Projectory. All Rights Reserved.</p>
+        
+        <!-- Terms and Legal -->
+        <div class="flex items-center gap-6 text-sm">
+          <a href="#" onclick="showTermsModal(event)" class="text-gray-400 hover:text-white transition">Terms & Conditions</a>
 
-        <!-- Social Links -->
-        <div class="flex items-center gap-6">
-          <a href="#" class="text-gray-400 hover:text-[#8A5CFF] transform hover:scale-110 transition-all" aria-label="Instagram">
-            <i class="fab fa-instagram text-xl"></i>
-          </a>
-          <a href="#" class="text-gray-400 hover:text-[#8A5CFF] transform hover:scale-110 transition-all" aria-label="LinkedIn">
-            <i class="fab fa-linkedin text-xl"></i>
-          </a>
         </div>
       </div>
     </div>
   </footer>
 </body>
 </html>
+
