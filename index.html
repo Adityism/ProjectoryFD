@@ -63,6 +63,7 @@
       width: 100%;
       height: 400px;
       margin: 0 auto;
+      margin-bottom: -2rem; /* Reduce bottom margin to bring sections closer */
       position: relative;
       z-index: 1;
       background: transparent;
@@ -72,7 +73,8 @@
 
     @media (max-width: 768px) {
       .spline-container {
-        height: 400px;
+        height: 350px;
+        margin-bottom: -1rem;
       }
       
       .grid {
@@ -85,8 +87,7 @@
       }
       
       section {
-        padding-top: 3rem !important;
-        padding-bottom: 3rem !important;
+        padding: 3rem 0;
       }
     }
 
@@ -165,6 +166,83 @@
       opacity: 1;
     }
 
+    /* Enhanced WhatsApp button styles with shimmer */
+    .whatsapp-button {
+      background: linear-gradient(135deg, #25D366, #128C7E);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+      border: 1px solid rgba(37, 211, 102, 0.3);
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.2),
+                  inset 0 1px 1px rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+    }
+
+    .whatsapp-button:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3),
+                  0 4px 12px rgba(37, 211, 102, 0.2),
+                  inset 0 1px 1px rgba(255, 255, 255, 0.3);
+      border-color: rgba(37, 211, 102, 0.5);
+    }
+
+    .whatsapp-button:active {
+      transform: translateY(1px);
+      box-shadow: 0 4px 12px rgba(37, 211, 102, 0.2),
+                  inset 0 1px 1px rgba(255, 255, 255, 0.2);
+    }
+
+    .whatsapp-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255, 255, 255, 0.4),
+        transparent
+      );
+      animation: shimmer 0s linear infinite;
+      transition: 0.5s;
+      z-index: 1;
+      filter: blur(3px);
+    }
+
+    .whatsapp-button:hover::before {
+      animation: shimmer 1.5s linear infinite;
+    }
+
+    @keyframes shimmer {
+      0% {
+        left: -100%;
+        opacity: 0.8;
+      }
+      100% {
+        left: 200%;
+        opacity: 0;
+      }
+    }
+
+    .whatsapp-button i {
+      position: relative;
+      z-index: 2;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+      margin-right: 8px;
+    }
+
+    .whatsapp-button span {
+      position: relative;
+      z-index: 2;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+      font-weight: 500;
+      letter-spacing: 0.3px;
+    }
+
     .contact-form-wrapper {
       animation: fadeInUp 0.8s ease-out;
       position: relative;
@@ -196,6 +274,33 @@
       border-color: #6C4CF1;
       box-shadow: 0 0 15px rgba(108, 76, 241, 0.3);
       transform: translateY(-1px);
+    }
+
+    .form-input.error {
+      border-color: #ef4444 !important;
+      animation: shake 0.5s ease-in-out;
+    }
+
+    .error-message {
+      color: #ef4444;
+      font-size: 0.875rem;
+      margin-top: 0.5rem;
+      display: none;
+      opacity: 0;
+      transform: translateY(-5px);
+      transition: all 0.3s ease;
+    }
+
+    .error-message.visible {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-5px); }
+      75% { transform: translateX(5px); }
     }
     
     @keyframes fadeInUp {
@@ -272,6 +377,7 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
+      padding-bottom: 2rem; /* Add bottom padding */
     }
 
     .hero-content {
@@ -517,8 +623,107 @@
       0%, 100% { opacity: 0.8; }
       50% { opacity: 0.4; }
     }
+
+    /* Adjust pricing section spacing */
+    #pricing {
+      position: relative;
+      padding-top: 3rem; /* Reduced from 16rem */
+      padding-bottom: 6rem;
+    }
+
+    /* Make consistent section spacing */
+    section {
+      padding: 4rem 0;
+      position: relative;
+    }
   </style>
   <script>
+    function nextStep() {
+      const step1 = document.getElementById('step1');
+      const step2 = document.getElementById('step2');
+      const step1Fields = step1.querySelectorAll('input[required], select[required]');
+      
+      let isValid = true;
+      step1Fields.forEach(input => {
+        const rules = {
+          fullName: { required: true, minLength: 2 },
+          email: { required: true, email: true }
+        }[input.name] || {};
+        
+        const errors = validateField(input, rules);
+        showError(input, errors);
+        if (errors.length > 0) {
+          isValid = false;
+        }
+      });
+      
+      if (!isValid) {
+        const firstError = step1.querySelector('.error-message.visible');
+        if (firstError) {
+          firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        return;
+      }
+      
+      step1.classList.remove('active');
+      step1.classList.add('hidden');
+      step2.classList.remove('hidden');
+      step2.classList.add('active');
+    }
+
+    function previousStep() {
+      const step1 = document.getElementById('step1');
+      const step2 = document.getElementById('step2');
+      
+      step2.classList.remove('active');
+      step2.classList.add('hidden');
+      step1.classList.remove('hidden');
+      step1.classList.add('active');
+    }
+
+    function validateField(input, rules) {
+      const errors = [];
+      const value = input.value.trim();
+      
+      if (rules.required && !value) {
+        errors.push(`${input.name.charAt(0).toUpperCase() + input.name.slice(1)} is required`);
+      }
+      
+      if (rules.email && value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+        errors.push('Please enter a valid email address');
+      }
+      
+      if (rules.phone && value && !/^\+?[\d\s-]{8,}$/.test(value)) {
+        errors.push('Please enter a valid phone number');
+      }
+      
+      if (rules.minLength && value.length < rules.minLength) {
+        errors.push(`Must be at least ${rules.minLength} characters`);
+      }
+
+      return errors;
+    }
+
+    function showError(input, errors) {
+      const field = input.closest('.form-field') || input.parentElement;
+      let errorDiv = field.querySelector('.error-message');
+      
+      if (!errorDiv) {
+        errorDiv = document.createElement('div');
+        errorDiv.className = 'error-message';
+        field.appendChild(errorDiv);
+      }
+      
+      if (errors.length > 0) {
+        input.classList.add('error');
+        errorDiv.textContent = errors[0];
+        errorDiv.classList.add('visible');
+      } else {
+        input.classList.remove('error');
+        errorDiv.classList.remove('visible');
+      }
+    }
+
     document.addEventListener('DOMContentLoaded', function() {
       // Smooth scroll for anchor links
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -687,37 +892,125 @@
         }
       }
 
+      // Form validation functions
+      function validateForm(form) {
+        const validationRules = {
+          fullName: { required: true, minLength: 2 },
+          email: { required: true, email: true },
+          phone: { phone: true },
+          description: { required: true, minLength: 10 },
+          deadline: { required: true }
+        };
+        
+        let isValid = true;
+        const formData = new FormData(form);
+        
+        for (const [name, rules] of Object.entries(validationRules)) {
+          const input = form.querySelector(`[name="${name}"]`);
+          if (input) {
+            const errors = validateField(input, rules);
+            showError(input, errors);
+            if (errors.length > 0) {
+              isValid = false;
+              console.log(`Validation error for ${name}:`, errors);
+            }
+          }
+        }
+        
+        // Validate plan selection
+        const planSelected = form.querySelector('input[name="plan"]:checked');
+        const planError = form.querySelector('.plan-error') || document.createElement('div');
+        planError.className = 'error-message plan-error';
+        const planContainer = form.querySelector('input[name="plan"]').closest('.mb-6');
+        
+        if (!planSelected) {
+          isValid = false;
+          planError.textContent = 'Please select a plan';
+          planError.classList.add('visible');
+          if (!planContainer.contains(planError)) {
+            planContainer.appendChild(planError);
+          }
+          console.log('Validation error: No plan selected');
+        } else {
+          planError.classList.remove('visible');
+        }
+        
+        // Validate terms
+        const terms = form.querySelector('input[name="terms"]');
+        const termsError = terms.closest('label').querySelector('.error-message') || 
+                          document.createElement('div');
+        termsError.className = 'error-message terms-error';
+        
+        if (!terms.checked) {
+          isValid = false;
+          termsError.textContent = 'You must accept the terms and conditions';
+          termsError.classList.add('visible');
+          if (!terms.closest('label').contains(termsError)) {
+            terms.closest('label').appendChild(termsError);
+          }
+          console.log('Validation error: Terms not accepted');
+        } else {
+          termsError.classList.remove('visible');
+        }
+        
+        return isValid;
+      }
+
+      // Add event listeners for real-time validation
+      if (form) {
+        const inputs = form.querySelectorAll('input, textarea, select');
+        inputs.forEach(input => {
+          input.addEventListener('blur', () => {
+            const rules = {
+              fullName: { required: true, minLength: 2 },
+              email: { required: true, email: true },
+              phone: { phone: true },
+              description: { required: true, minLength: 10 },
+              deadline: { required: true }
+            }[input.name] || {};
+            
+            const errors = validateField(input, rules);
+            showError(input, errors);
+          });
+          
+          input.addEventListener('input', () => {
+            input.classList.remove('error');
+            const errorDiv = input.parentElement.querySelector('.error-message');
+            if (errorDiv) {
+              errorDiv.classList.remove('visible');
+            }
+          });
+        });
+        
+        // Update form submission handler
+        form.onsubmit = async function(e) {
+          e.preventDefault();
+          
+          if (!validateForm(this)) {
+            // If validation fails, scroll to the first error
+            const firstError = form.querySelector('.error-message.visible');
+            if (firstError) {
+              firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+            return false;
+          }
+          
+          // Continue with the existing form submission logic...
+        };
+      }
+
+      // Add error message divs to form fields
+      document.querySelectorAll('.form-input').forEach(input => {
+        const field = input.closest('.form-field') || input.parentElement;
+        if (!field.querySelector('.error-message')) {
+          const errorDiv = document.createElement('div');
+          errorDiv.className = 'error-message';
+          field.appendChild(errorDiv);
+        }
+      });
+
       // ... rest of existing code ...
     });
-
-    function nextStep() {
-      const step1 = document.getElementById('step1');
-      const step2 = document.getElementById('step2');
-      
-      // Basic validation for step 1
-      const email = document.querySelector('input[name="email"]');
-      const fullName = document.querySelector('input[name="fullName"]');
-      
-      if (!email.value || !fullName.value) {
-        alert('Please fill in all required fields');
-        return;
-      }
-      
-      step1.classList.remove('active');
-      step1.classList.add('hidden');
-      step2.classList.remove('hidden');
-      step2.classList.add('active');
-    }
-
-    function previousStep() {
-      const step1 = document.getElementById('step1');
-      const step2 = document.getElementById('step2');
-      
-      step2.classList.remove('active');
-      step2.classList.add('hidden');
-      step1.classList.remove('hidden');
-      step1.classList.add('active');
-    }
 
     function showConfirmationCard() {
       const overlay = document.querySelector('.confirmation-overlay');
@@ -770,7 +1063,7 @@
     <nav aria-label="Primary Navigation" class="max-w-[1280px] mx-auto flex items-center justify-between px-6 py-2">
       <div class="flex items-center justify-between w-full gap-8">
         <a class="flex items-center" href="#home">
-          <img alt="Projectory logo" class="h-16 w-auto object-contain hoer:opacity-90 transition-opacity" src="1logo.png"/>
+          <img alt="Projectory logo" class="h-16 w-auto object-contain hoer:opacity-90 transition-opacity" src="images/1logo.png"/>
         </a>
         <ul class="hidden md:flex space-x-8 text-sm font-normal">
           <li><a class="text-white hover:text-purple-400 transition-colors" href="#home">Home</a></li>
@@ -975,29 +1268,106 @@
           </a>
         </div>
       </div>
+      
+      <!-- Add-ons Section -->
+      <div class="mt-12 pt-4">
+        <div class="text-center mb-12">
+          <span class="inline-flex items-center gap-2 bg-[#6C4CF1]/20 rounded-full px-4 py-1 text-[#8A5CFF] text-sm mb-4">
+            <i class="fas fa-puzzle-piece"></i>
+            <span class="font-medium">Add-ons</span>
+          </span>
+          <h3 class="text-2xl md:text-3xl font-medium mt-4">
+            Enhance Your Project
+          </h3>
+          <p class="text-[#A1A1AA] text-lg max-w-2xl mx-auto">
+            Customize your project with these powerful add-ons
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- PPT Design Card -->
+          <div class="premium-card card-glow rounded-2xl p-6 sm:p-8 transition-transform hover:scale-[1.02] flex flex-col min-h-[200px]">
+            <div class="flex items-start justify-between mb-4">
+              <div class="flex items-center gap-3">
+                <div class="bg-gradient-to-r from-[#6C4CF1] to-[#8A5CFF] p-3 rounded-lg shadow-[0_0_15px_rgba(108,76,241,0.5)]">
+                  <span class="text-lg">🎞️</span>
+                </div>
+                <span class="font-medium">PPT Design</span>
+              </div>
+              <span class="text-2xl font-light">₹149</span>
+            </div>
+            <div class="text-[#A1A1AA] text-lg leading-relaxed mt-auto">
+              Clean, animated, and themed slides — perfect for class presentations and viva sessions.
+            </div>
+          </div>
+
+          <!-- Documentation Bundle Card -->
+          <div class="premium-card card-glow rounded-2xl p-6 sm:p-8 transition-transform hover:scale-[1.02] flex flex-col min-h-[200px]">
+            <div class="flex items-start justify-between mb-4">
+              <div class="flex items-center gap-3">
+                <div class="bg-gradient-to-r from-[#6C4CF1] to-[#8A5CFF] p-3 rounded-lg shadow-[0_0_15px_rgba(108,76,241,0.5)]">
+                  <span class="text-lg">📑</span>
+                </div>
+                <span class="font-medium">Documentation Bundle</span>
+              </div>
+              <span class="text-2xl font-light">₹299</span>
+            </div>
+            <div class="text-[#A1A1AA] text-sm leading-relaxed mt-auto">
+              Get all essential documents for submission:
+              <br />• SRS (Software Requirements Specification)
+              <br />• Project Report / Synopsis
+              <br />• Timeline Documentation
+              <br />• PPT Design
+            </div>
+          </div>
+
+          <!-- Express Delivery Card -->
+          <div class="premium-card card-glow rounded-2xl p-6 sm:p-8 transition-transform hover:scale-[1.02] flex flex-col min-h-[200px]">
+            <div class="flex items-start justify-between mb-4">
+              <div class="flex items-center gap-3">
+                <div class="bg-gradient-to-r from-[#6C4CF1] to-[#8A5CFF] p-3 rounded-lg shadow-[0_0_15px_rgba(108,76,241,0.5)]">
+                  <span class="text-lg">⚡</span>
+                </div>
+                <span class="font-medium">Express Delivery</span>
+              </div>
+              <span class="text-2xl font-light">₹249</span>
+            </div>
+            <div class="text-[#A1A1AA] text-base leading-relaxed mt-auto">
+              Need your project done in 48 hours or less? Add this to speed up your delivery without compromising quality.
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- Contact Section -->
-  <section id="contact" class="relative py-16">
+  <section id="contact" class="relative py-5 md:py-8">
     <div class="max-w-[1280px] mx-auto px-6 reveal">
-      <div class="text-center mb-16">
-        <div class="inline-flex items-center gap-2 bg-[#6C4CF1]/20 rounded-full px-4 py-2 text-white text-sm mb-4 support-badge">
+      <div class="text-center mb-10">
+        <div class="inline-flex items-center gap-2 bg-[#6C4CF1]/20 rounded-full px-4 py-2 text-white text-sm mb-3 support-badge">
           <i class="fas fa-headset"></i>
           <span>Connect With Us</span>
         </div>
-        <h2 class="text-4xl md:text-6xl font-bold mt-6 mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-white/80 leading-tight md:leading-tight">
+        <h2 class="text-4xl md:text-6xl font-bold mt-4 mb-4 bg-clip-text text-transparent bg-gradient-to-r from-white to-white/80 leading-tight md:leading-tight">
           Let's Start Building Your Project
         </h2>
-        <p class="text-[#A1A1AA] text-lg max-w-2xl mx-auto mt-4">
-          Our team will get in touch within 24 hours and start working on your project right away.
+        <p class="text-[#A1A1AA] text-lg max-w-2xl mx-auto mt-3 mb-6">
+          Our team will get in touch within 12 hours and start working on your project right away.
         </p>
+        <div class="flex justify-center mb-4">
+          <a href="https://wa.me/919027107868?text=Hi%20Projectory%2C%20I%20need%20help%20with%20my%20project!" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 whatsapp-button text-white font-medium rounded-xl px-8 py-4 text-lg transform hover:scale-105 transition-all duration-300">
+            <i class="fab fa-whatsapp text-2xl"></i>
+            WhatsApp Us
+          </a>
+        </div>
+        <p class="text-[#A1A1AA] text-lg mb-8">or fill out the form below</p>
       </div>
 
-      <form id="contactForm" class="max-w-3xl mx-auto premium-card contact-form-wrapper rounded-2xl p-8" onsubmit="return false">
+      <form id="contactForm" class="max-w-2xl mx-auto premium-card contact-form-wrapper rounded-2xl p-4 md:p-6 mb-8" style="max-width: 600px;">
         <!-- Step 1 -->
-        <div id="step1" class="form-step active">
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div id="step1" class="form-step active space-y-4">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
             <div>
               <label class="block text-sm text-[#A1A1AA] mb-2">Full Name*</label>
               <input type="text" name="fullName" class="w-full bg-black/40 border border-purple-500/20 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-purple-500 form-input" required>
@@ -1008,12 +1378,12 @@
             </div>
           </div>
           
-          <div class="mb-6">
+          <div class="mb-4">
             <label class="block text-sm text-[#A1A1AA] mb-2">Email Address*</label>
             <input type="email" name="email" class="w-full bg-black/40 border border-purple-500/20 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-purple-500 form-input" required>
           </div>
 
-          <div class="mb-6">
+          <div class="mb-4">
             <label class="block text-sm text-[#A1A1AA] mb-2">Preferred Contact Method</label>
             <select name="contactMethod" class="w-full bg-black/40 border border-purple-500/20 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-purple-500 form-input">
               <option value="email">Email</option>
@@ -1021,14 +1391,14 @@
             </select>
           </div>
 
-          <button type="button" onclick="nextStep()" class="w-full bg-gradient-to-r from-[#6C4CF1] to-[#8A5CFF] rounded-xl py-4 text-white text-lg font-medium hover:scale-[1.02] hover:brightness-110 transition-all duration-300 button-glow">
+          <button type="button" onclick="nextStep()" class="w-full bg-gradient-to-r from-[#6C4CF1] to-[#8A5CFF] rounded-xl py-3 text-white text-lg font-medium hover:scale-[1.02] hover:brightness-110 transition-all duration-300 button-glow">
             Next Step
           </button>
         </div>
 
         <!-- Step 2 -->
-        <div id="step2" class="form-step hidden">
-          <div class="mb-6">
+        <div id="step2" class="form-step hidden space-y-4">
+          <div class="mb-4">
             <label class="block text-sm text-[#A1A1AA] mb-2">Select Your Plan*</label>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
               <label class="cursor-pointer">
@@ -1055,12 +1425,12 @@
             </div>
           </div>
 
-          <div class="mb-6">
+          <div class="mb-4">
             <label class="block text-sm text-[#A1A1AA] mb-2">Project Description*</label>
             <textarea name="description" rows="4" class="w-full bg-black/40 border border-purple-500/20 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-purple-500 form-input resize-none" required></textarea>
           </div>
 
-          <div class="mb-6">
+          <div class="mb-4">
             <label class="block text-sm text-[#A1A1AA] mb-2">Project Deadline*</label>
             <input 
               type="date" 
@@ -1071,20 +1441,27 @@
             >
           </div>
 
-          <div class="mb-8">
+          <div class="mb-6">
             <label class="flex items-center gap-2 cursor-pointer">
               <input type="checkbox" name="terms" class="w-4 h-4 rounded border-purple-500/20 text-purple-500 focus:ring-purple-500" required>
               <span class="text-sm text-gray-400">I agree to the <a href="#" class="text-[#6C4CF1] hover:text-[#8A5CFF] underline" onclick="showTermsModal(event)">Terms and Conditions</a>*</span>
             </label>
           </div>
 
-          <div class="flex gap-4">
+          <div class="flex gap-3">
             <button type="button" onclick="previousStep()" class="w-1/2 bg-black/40 border border-purple-500/20 rounded-xl py-4 text-white text-lg font-medium hover:border-purple-500 transition-all duration-300">
               Previous
             </button>
             <button type="submit" class="w-1/2 bg-gradient-to-r from-[#6C4CF1] to-[#8A5CFF] rounded-xl py-4 text-white text-lg font-medium hover:scale-[1.02] hover:brightness-110 transition-all duration-300 button-glow">
               Submit
             </button>
+          </div>
+          
+          <div class="mt-4 text-center">
+            <a href="https://wa.me/919027107868?text=Hi%20Projectory%2C%20I%20need%20help%20with%20my%20project!" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 whatsapp-button text-white font-medium rounded-xl px-6 py-3">
+              <i class="fab fa-whatsapp text-xl"></i>
+              WhatsApp Us
+            </a>
           </div>
         </div>
       </form>
@@ -1161,7 +1538,13 @@
             <li>Take full responsibility for your use of the Service</li>
           </ul>
         </section>
-        
+        <section>
+          <h4 class="text-white text-lg font-medium mb-3">6. Modifications (Advanced Plan)</h4>
+          <p>The Advanced Plan includes unlimited modification requests within reason and within the original project scope, up to 10 modification instances or until the project deadline, whichever comes first.Requests that significantly change the original requirements or add entirely new features may be treated as separate enhancements and may incur additional charges.
+
+            Our goal is to ensure client satisfaction while maintaining fair use of our services.</p>
+
+        </section>
         <section>
           <h4 class="text-white text-lg font-medium mb-3">6. Privacy and Data Handling</h4>
           <p>We take your privacy seriously. By using our services, you consent to the collection, use, and storage of your personal information as outlined in our Privacy Policy.</p>
@@ -1213,7 +1596,11 @@
           <p>If you have any questions or concerns regarding these Terms and Conditions, please contact us at:</p>
           <p class="mt-2">Email: contact@projectory.in</p>
         </section>
-
+        <section>
+          <h4 class="text-white text-lg font-medium mb-3">12. Contact Information</h4>
+          <p>If you have any questions or concerns regarding these Terms and Conditions, please contact us at:</p>
+          <p class="mt-2">Email: contact@projectory.in</p>
+        </section>
         <section>
           <h4 class="text-white text-lg font-medium mb-3">Final Notes</h4>
           <ul class="list-disc pl-6 mt-2 space-y-2">
@@ -1245,7 +1632,7 @@
   </div>
 
   <!-- FAQ Section -->
-  <section id="faq" class="relative py-16">
+  <section id="faq" class="relative py-10 md:py-12 -mt-2 md:-mt-4"> 
     <div class="max-w-[1280px] mx-auto px-6 reveal">
       <div class="text-center mb-16">
         <span class="inline-flex items-center gap-2 bg-purple-900/30 rounded-full px-4 py-1 text-purple-200 text-sm">
@@ -1347,7 +1734,7 @@
   </section>
 
   <!-- Footer -->
-  <footer class="relative bg-black border-t border-purple-900/20 overflow-hidden footer-font py-12">
+  <footer class="relative bg-black border-t border-purple-900/20 overflow-hidden footer-font py-8 -mt-4">
     <!-- Subtle gradient background effect -->
     <div class="absolute inset-0 pointer-events-none">
       <div class="absolute w-[800px] h-[800px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#6C4CF1]/5 blur-[100px] rounded-full"></div>
@@ -1360,7 +1747,7 @@
         <div class="flex flex-col items-start">
           <!-- Logo -->
           <div class="flex flex-col items-center md:items-start w-full mb-6">
-            <img alt="Projectory logo" class="h-12 w-auto mb-4" src="1logo.png" />
+            <img alt="Projectory logo" class="h-12 w-auto mb-4" src="images/1logo.png" />
             <p class="text-gray-400 text-center md:text-left">
               Get your projects done at the price of a pizza.<br/>
               Stay ahead by enhancing your resume with high-quality projects.
@@ -1381,6 +1768,12 @@
             <li class="text-gray-400 inline-flex items-center gap-2 justify-center md:justify-end">
               <span>+91 9027107868</span>
               <i class="fas fa-phone-alt"></i>
+            </li>
+            <li>
+              <a href="https://wa.me/919027107868?text=Hi%20Projectory%2C%20I%20need%20help%20with%20my%20project!" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 whatsapp-button text-white font-medium rounded-xl px-6 py-3">
+                <i class="fab fa-whatsapp text-xl"></i>
+                WhatsApp Us
+              </a>
             </li>
           </ul>
         </div>
@@ -1404,4 +1797,3 @@
   </footer>
 </body>
 </html>
-
