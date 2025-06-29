@@ -1,0 +1,1196 @@
+<!doctype html>
+<html lang="en" class="tw-dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <title>Projectory builds all full-stack software and AI solutions.</title>
+    <meta name="description" content="Get all your AI models and tools in one place" />
+
+    <!-- ✅ Favicon for tab and browser (place the file in /public) -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <!-- Optional: include high-res PNG version for modern browsers -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png" />
+    <!-- Optional Apple Touch Icon -->
+    <link rel="apple-touch-icon" href="/favicon.png" />
+
+    <!-- ✅ Open Graph / Facebook Meta -->
+    <meta property="og:title" content="Build Software & AI Projects in Days — Projectory" />
+    <meta property="og:description" content="We deliver production-grade MVPs and academic projects with 7-day speed and startup-level polish." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://projectory.in" />
+    <meta property="og:image" content="/assets/logo/thumbnail.png" />
+
+    <!-- ✅ Tailwind & Index CSS -->
+    <link rel="stylesheet" href="css/tailwind-build.css" />
+    <link rel="stylesheet" href="css/index.css" />
+
+    <!-- ✅ Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css"
+      integrity="sha512-dPXYcDub/aeb08c63jRq/k6GaKccl256JQy/AnOq7CAnEZ9FzSL9wSbcZkMp4R26vBsMLFYH4kQ67/bbV8XaCQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- ✅ Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KTV9394887"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-KTV9394887');
+    </script>
+  </head>
+
+    </head>
+    <body
+        class="tw-flex tw-min-h-[100vh] tw-flex-col tw-bg-[#fcfcfc] 
+            tw-text-black dark:tw-bg-black  dark:tw-text-white"
+    >
+        <!-- <div class="tw-absolute tw-top-0 tw-left-1/2 tw--translate-x-1/2 tw-flex 
+                    tw-h-[100px] tw-w-full tw-max-w-[80%]">
+            <div class="header-gradient tw-h-full tw-w-full "></div>
+        </div> -->
+
+        <header
+            class="lg:tw-px-4 tw-max-w-[100vw] tw-max-w-lg:tw-mr-auto max-lg:tw-top-0 tw-fixed tw-top-4 lg:tw-left-1/2 lg:tw--translate-x-1/2 tw-z-20 tw-flex tw-h-[60px] tw-w-full 
+                    tw-text-gray-700 tw-bg-white dark:tw-text-gray-200 dark:tw-bg-[#17181b] tw-px-[3%] tw-rounded-md lg:tw-max-w-5xl tw-shadow-md dark:tw-shadow-gray-700
+                    lg:tw-justify-around lg:!tw-backdrop-blur-lg lg:tw-opacity-[0.99]"
+        >
+            <a class="tw-flex tw-p-[4px] tw-gap-2 tw-place-items-center" href="#WhyChooseProjectory">
+                <div class="tw-h-[50px] tw-max-w-[150px] tw-bg-black dark:tw-bg-[#17181b] tw-rounded-xl tw-p-1 tw-shadow-sm">
+                    <img
+                        class="tw-object-contain tw-h-full tw-w-auto"
+                        src="./assets/logo/logo.png"
+                        alt="Projectory Logo"
+                    />
+                </div>
+            </a>
+            <div
+                class="collapsible-header animated-collapse max-lg:tw-shadow-md"
+                id="collapsed-header-items"
+            >
+                <nav
+                    class="tw-relative tw-flex tw-h-full max-lg:tw-h-max tw-w-max tw-gap-5 tw-text-base max-lg:tw-mt-[30px] max-lg:tw-flex-col 
+                                max-lg:tw-gap-5 lg:tw-mx-auto tw-place-items-center"
+                >
+                    <a class="header-links" href="#OurServicesWhatWeBuild">Our Services</a>
+                    <a class="header-links" href="#WhatOurClientsSay">Testimonials</a>
+                    <a class="header-links" href="#pricing">Pricing</a>
+                    <a class="header-links" href="#GetInTouch">Contact Us</a>
+                    <!-- Removed Pricing nav item and Features replaced -->
+                </nav>
+                <div
+                    class="lg:tw-mx-4 tw-flex tw-place-items-center tw-gap-[20px] tw-text-base max-md:tw-w-full 
+                            max-md:tw-flex-col max-md:tw-place-content-center"
+                >
+                    <button type="button" onclick="toggleMode()" class="header-links tw-text-gray-600 dark:tw-text-gray-300" title="toggle-theme" 
+                            id="theme-toggle"> 
+                        <i class="bi bi-sun" id="toggle-mode-icon"></i>
+                    </button>
+                    <a
+                        href="https://wa.me/919027107868"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="WhatsApp Us"
+                        class="btn tw-flex tw-gap-3 tw-px-3 tw-py-2 tw-transition-transform 
+                                    tw-duration-[0.3s] hover:tw-translate-x-2"
+                    >
+                        <span>WhatsApp Us</span>
+                        <i class="bi bi-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+            <button
+                class="bi bi-list tw-absolute tw-right-3 tw-top-3 tw-z-50 tw-text-3xl tw-text-gray-500 lg:tw-hidden"
+                onclick="toggleHeader()"
+                aria-label="menu"
+                id="collapse-btn"
+            ></button>
+        </header>
+
+        <section
+            class="hero-section tw-relative tw-mt-20 tw-flex tw-min-h-[100vh] tw-w-full tw-max-w-[100vw] tw-flex-col tw-overflow-hidden max-lg:tw-mt-[100px]"
+            id="hero-section"
+        >
+
+            <!-- video container -->
+            <div class="tw-fixed tw-bg-[#000000af] dark:tw-bg-[#80808085] tw-top-0 tw-left-1/2 tw--translate-x-1/2 tw-z-20 tw-transition-opacity
+                tw-duration-300 tw-scale-0 tw-opacity-0 tw-p-2
+                tw-w-full tw-h-full tw-flex tw-place-content-center tw-place-items-center" id="video-container-bg">
+
+                <div class="tw-max-w-[80vw] max-lg:tw-max-w-full max-lg:tw-w-full tw-scale-0 tw-transition-transform tw-duration-500 tw-p-6 tw-rounded-xl  max-lg:tw-px-2 tw-w-full tw-gap-2 tw-shadow-md 
+                            tw-h-[90vh] max-lg:tw-h-auto max-lg:tw-min-h-[400px] tw-bg-white dark:tw-bg-[#16171A] tw-max-h-full
+                            " id="video-container">
+                    <div class="tw-w-full tw-flex">
+                        <button type="button" onclick="closeVideo()" class="tw-ml-auto tw-text-xl" title="close">
+                            <i class="bi bi-x-circle-fill"></i>
+                        </button>
+                    </div>
+                    <div class="tw-flex tw-w-full  tw-rounded-xl tw-px-[5%] max-md:tw-px-2 tw-min-h-[300px] tw-max-h-[90%] tw-h-full">
+
+                        <div class="tw-relative tw-bg-black tw-min-w-full tw-min-h-full tw-overflow-clip tw-rounded-md">
+                            <!-- add your youtube video link here -->
+                            <iframe class="tw-absolute tw-top-[50%] tw--translate-y-[50%] tw-left-[50%] tw--translate-x-[50%] tw-w-full tw-h-full" 
+                                src="https://www.youtube.com/embed/6j4fPVkA3EA?si=llcTrXPRM-MRXDZB&amp;controls=0&rel=0&showinfo=0&autoplay=1&loop=1&mute=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        </div>
+        
+                    </div>
+                </div>  
+            </div>
+
+            <div    
+                class="hero-bg-gradient tw-relative tw-flex tw-h-full tw-min-h-[100vh] tw-w-full tw-flex-col tw-place-content-center tw-gap-6 tw-p-[5%] max-xl:tw-place-items-center max-lg:tw-p-4"
+            >
+
+                <div class="purple-bg-grad  reveal-up tw-absolute tw-left-1/2 tw--translate-1/2 tw-top-[10%] tw-h-[120px] tw-w-[120px]"
+                ></div> 
+
+                <div
+                    class="tw-flex tw-flex-col tw-min-h-[60vh] tw-place-content-center tw-items-center"
+                >
+                    <h2
+                        class="reveal-up tw-text-center tw-text-7xl tw-font-semibold tw-uppercase tw-leading-[90px] max-lg:tw-text-4xl max-md:tw-leading-snug"
+                    >
+                        <span class=""> We Build What You Imagine </span>
+                        <br />
+                        <span class="tw-font-thin tw-font-serif text-glow text-shine"> Turning Vision Into Velocity </span>
+                    </h2>
+                    <div
+                        class="reveal-up tw-mt-8 tw-max-w-[450px] tw-text-lg max-lg:tw-text-base tw-p-2 tw-text-center
+                         tw-text-gray-800 dark:tw-text-white max-lg:tw-max-w-full"
+                    >
+                        <!-- Test, Develop and Deploy all your AI models in one place, with Projectory seamless playground interface -->
+                        Software and AI solutions — from enterprise systems to academic projects trusted for fast execution and scalable outcomes
+                    </div>
+
+<div
+    class="reveal-up tw-mt-10 max-md:tw-flex-col tw-flex tw-place-items-center tw-gap-4"
+>
+    <!-- Founder Button -->
+    <a
+        href="#pricing"
+        class="btn !tw-w-[170px] max-lg:!tw-w-[160px] !tw-rounded-xl !tw-py-4 max-lg:!tw-py-2 tw-flex tw-gap-2 tw-group 
+               !tw-bg-transparent !tw-text-black dark:!tw-text-white tw-transition-colors tw-duration-[0.3s] 
+               tw-border-[1px] tw-border-black dark:tw-border-white"
+    >
+        <span class="bi bi-person-badge"></span>
+        <span>I'm a Student</span>
+    </a>
+
+    <!-- Student Button -->
+    <a
+        href="#pricing"
+        class="btn tw-group max-lg:!tw-w-[160px] tw-flex tw-gap-2 tw-shadow-lg !tw-w-[170px] !tw-rounded-xl 
+               !tw-py-4 max-lg:!tw-py-2 tw-transition-transform tw-duration-[0.3s] hover:tw-scale-x-[1.03]"
+    >
+        <span>I'm a Founder</span>
+        <i class="bi bi-arrow-right group-hover:tw-translate-x-1 tw-duration-300"></i>
+    </a>
+</div>
+                </div>
+                
+                <!-- prompt container -->
+
+
+        <section
+            class="tw-relative tw-flex tw-w-full tw-max-w-[100vw] tw-flex-col tw-place-content-center tw-place-items-center tw-overflow-hidden tw-p-8"
+        >
+            <h2 class="reveal-up tw-text-3xl max-md:tw-text-xl">
+                You’re right where you should be
+            </h2>
+
+            <div class="reveal-up carousel-container">
+                <div
+                    class="carousel lg:w-place-content-center tw-mt-10 tw-flex tw-w-full tw-gap-5 max-md:tw-gap-2"
+                >
+                    <!-- add the brands using your app  -->
+                    <div class="carousel-img tw-h-[60px] tw-w-[300px]">
+                        <img
+                            src="./assets/images/brand-logos/1.svg"
+                            alt="Google"
+                            class="tw-h-full tw-w-full tw-object-contain tw-grayscale tw-transition-colors hover:tw-grayscale-0"
+                            srcset=""
+                        />
+                    </div>
+                    <div class="carousel-img tw-h-[60px] tw-w-[300px]">
+                        <img
+                            src="./assets/images/brand-logos/2.svg"
+                            alt="Microsoft"
+                            class="tw-h-full tw-w-full tw-object-contain tw-grayscale tw-transition-colors hover:tw-grayscale-0"
+                            srcset=""
+                        />
+                    </div>
+                    <div class="carousel-img tw-h-[60px] tw-w-[300px]">
+                        <img
+                            src="./assets/images/brand-logos/3.svg"
+                            alt="Adobe"
+                            class="tw-h-full tw-w-full tw-object-contain tw-grayscale tw-transition-colors hover:tw-grayscale-0"
+                            srcset=""
+                        />
+                    </div>
+                    <div class="carousel-img tw-h-[60px] tw-w-[300px]">
+                        <img
+                            src="./assets/images/brand-logos/4.svg"
+                            alt="Airbnb"
+                            class="tw-h-full tw-w-full tw-object-contain tw-grayscale tw-transition-colors hover:tw-grayscale-0"
+                            srcset=""
+                        />
+                    </div>
+                    <div class="carousel-img tw-h-[60px] tw-w-[300px]">
+                        <img
+                            src="./assets/images/brand-logos/5.svg"
+                            alt="Stripe"
+                            class="tw-h-full tw-w-full tw-object-contain tw-grayscale tw-transition-colors hover:tw-grayscale-0"
+                            srcset=""
+                        />
+                    </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+     <section
+            class="tw-relative tw-flex tw-w-full tw-py-24 max-lg:tw-py-16 tw-flex-col tw-place-content-center tw-place-items-center tw-overflow-hidden"
+        >   
+             <div class="tw-w-full  tw-place-content-center tw-items-center 
+                        tw-flex tw-flex-col tw-max-w-[900px] tw-gap-4 tw-p-4">
+               <div class="purple-bg-grad  reveal-up tw-absolute tw-right-[20%] tw-top-[20%] tw-h-[200px] tw-w-[200px]"
+                ></div>
+<h2 class="reveal-up tw-text-6xl max-lg:tw-text-4xl tw-text-center tw-leading-snug tw-uppercase flex flex-wrap justify-center gap-y-4">
+    <span class="tw-font-semibold">One Platform</span>
+    <span class="tw-font-serif tw-text-4xl max-lg:tw-text-2xl tw-font-normal">From College Projects to Startup MVPs</span>
+</h2>
+
+
+                </div>
+            </div>
+        </section>
+
+        <section
+            class="tw-relative tw-flex tw-max-w-[100vw] tw-flex-col tw-place-content-center tw-place-items-center tw-overflow-hidden"
+        >   
+
+
+            <div
+
+
+                <div
+                    class="tw-mt-6 tw-flex tw-flex-col tw-max-w-[1150px] max-lg:tw-max-w-full tw-h-full 
+                            tw-p-4 max-lg:tw-place-content-center tw-gap-8 "
+                >   
+
+                    <div class="max-xl:tw-flex max-xl:tw-flex-col tw-place-items-center tw-grid tw-grid-cols-3 tw-gap-8 
+                                tw-place-content-center tw-auto-rows-auto">
+                        <div class="reveal-up tw-w-[350px] tw-h-[540px] tw-flex max-md:tw-w-full">
+                            <a href="#GetInTouch" class=" tw-relative tw-p-10 tw-transition-all tw-duration-300 tw-group/card  tw-gap-5 tw-flex 
+                                tw-flex-col tw-w-full tw-h-full  tw-bg-[#f6f7fb] dark:tw-bg-[#171717] tw-rounded-3xl 
+                                hover:tw-scale-[1.02]">
+                                <div class="tw-overflow-hidden tw-w-full tw-min-h-[180px] tw-h-[180px]">
+                                    <img src="./assets/images/home/cs.gif" class="tw-w-full tw-object-contain tw-h-auto" 
+                                        alt="unified interface">
+                                    <!-- <i class="bi bi-grid-1x2-fill"></i> -->
+                                </div>
+                                <h2 class="tw-text-3xl max-md:tw-text-2xl tw-font-medium">Academic Projects</h2>
+                                <p class="tw-text-base tw-leading-normal tw-text-gray-800 dark:tw-text-gray-200">
+                                    Deadline stress? No worries — we build fully functional, structurally sound academic projects that impress professors and recruiters alike. From AI tools to full-stack platforms, get clean, deployable code you can actually explain.
+
+                                </p>
+                                <div class="tw-flex tw-items-center tw-gap-2 tw-mt-auto">
+                                    <span>Learn more</span>
+                                    <i class="bi bi-arrow-right tw-transform tw-transition-transform tw-duration-300 group-hover/card:tw-translate-x-2"></i>
+                                </div>
+                            </a>
+                        </div>
+
+                        
+                        <div class="reveal-up tw-w-[350px] tw-h-[540px] tw-flex max-md:tw-w-full">
+                            <a href="#GetInTouch" class=" tw-relative tw-p-10 tw-transition-all tw-duration-300 tw-group/card  tw-gap-5 tw-flex 
+                                tw-flex-col tw-w-full tw-h-full  tw-bg-[#f6f7fb] dark:tw-bg-[#171717] tw-rounded-3xl 
+                                hover:tw-scale-[1.02]">
+                                <div class="tw-w-full tw-min-h-[180px] tw-h-[180px] tw-overflow-hidden">
+                                    <img src="./assets/images/home/startup.gif" 
+                                        alt="API" class="tw-w-full tw-h-auto tw-object-contain">
+                                    <!-- <i class="bi bi-grid-1x2-fill"></i> -->
+                                </div>
+                                <h2 class="tw-text-3xl max-md:tw-text-2xl tw-font-medium">Startup Software</h2>
+                                <p class="tw-leading-normal tw-text-gray-800 dark:tw-text-gray-200">
+                                    We build production-grade startup software — real, scalable, and ready for users from day one. Whether you’re launching your first SaaS or validating a bold idea, our systems are engineered for performance, security, and long-term growth.
+                                </p>
+                                <div class="tw-flex tw-items-center tw-gap-2 tw-mt-auto">
+                                    <span>Learn more</span>
+                                    <i class="bi bi-arrow-right tw-transform tw-transition-transform tw-duration-300 group-hover/card:tw-translate-x-2"></i>
+                                </div>
+                            </a>
+                        </div>
+
+                        
+                        <div class="reveal-up tw-w-[350px] tw-h-[540px] tw-flex max-md:tw-w-full">
+                            <a href="#GetInTouch" class=" tw-relative tw-p-10 tw-transition-all tw-duration-300 tw-group/card  tw-gap-5 tw-flex 
+                                tw-flex-col tw-w-full tw-h-full  tw-bg-[#f6f7fb] dark:tw-bg-[#171717] tw-rounded-3xl 
+                                hover:tw-scale-[1.02]">
+                                <div class="tw-w-full tw-flex tw-place-contet-center tw-min-h-[180px] tw-h-[180px] tw-rounded-xl tw-overflow-hidden">
+                                    <img src="./assets/images/home/bwp.gif" class="tw-w-full tw-h-auto tw-object-contain" 
+                                            alt="Prebuilt integrations">
+                                </div>
+                                <h2 class="tw-text-2xl max-md:tw-text-1xl tw-font-medium">Cost-Optimized</h2>
+                                <p class="tw-leading-normal tw-text-gray-800 dark:tw-text-gray-200">
+                                    We don’t believe in burning VC cash — or your pocket. Our builds are lean, scalable, and engineered to give you 10x value per cent. No overpriced fluff, no agency bloat. Just solid software, built like it’s our own money on the line.
+                                </p>
+                                <div class="tw-flex tw-items-center tw-gap-2 tw-mt-auto">
+                                    <span>Learn more</span>
+                                    <i class="bi bi-arrow-right tw-transform tw-transition-transform tw-duration-300 group-hover/card:tw-translate-x-2"></i>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    
+
+
+
+
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+<section
+            class="tw-relative tw-mt-10 tw-flex tw-min-h-[100vh] tw-w-full tw-max-w-[100vw] tw-flex-col tw-place-items-center lg:tw-p-6"
+        >
+
+            <div
+                class="reveal-up tw-mt-[5%] tw-flex tw-h-full tw-w-full tw-place-content-center 
+                        tw-gap-2 tw-p-4 max-lg:tw-max-w-full max-lg:tw-flex-col"
+            >
+
+                <div
+                    class="tw-relative tw-flex tw-max-w-[30%] max-lg:tw-max-w-full tw-flex-col 
+                            tw-place-items-start tw-gap-4  tw-p-2 max-lg:tw-place-items-center 
+                            max-lg:tw-place-content-center max-lg:tw-w-full"
+                >
+                    <div
+                        class="tw-top-40 tw-flex tw-flex-col lg:tw-sticky tw-place-items-center tw-max-h-fit tw-max-w-[850px] max-lg:tw-max-h-fit max-lg:tw-max-w-[320px] tw-overflow-hidden"
+                    >
+                        <h2 class="reveal-up tw-text-5xl max-lg:tw-text-3xl tw-text-center tw-leading-normal tw-uppercase ">
+                            <section id="OurServicesWhatWeBuild"></section>
+                            <span class="tw-font-semibold tw-bg-gradient-to-r tw-from-purple-600 tw-to-blue-500 tw-text-transparent tw-bg-clip-text tw-animate-gradient-x">Our Services</span>
+                            <br>
+                            <span class="tw-font-serif tw-text-gray-600 dark:tw-text-gray-300 hover:tw-text-gray-900 dark:hover:tw-text-white tw-transition-colors tw-duration-300">What we build</span>
+                        </h2>
+                        
+
+
+                    </div>
+                   
+                </div>
+
+                <div
+                    class="tw-flex tw-flex-col tw-gap-10 tw-h-full tw-max-w-1/2 max-lg:tw-max-w-full tw-px-[10%]
+                             max-lg:tw-px-4 max-lg:tw-gap-3 max-lg:tw-w-full lg:tw-top-[20%]
+                             tw-place-items-center
+                             "
+                >   
+                    <div class="reveal-up tw-h-[240px] tw-w-[450px] max-md:tw-w-full">
+                        <a href="#GetInTouch"
+                            class="tw-flex tw-w-full tw-h-full tw-gap-8 tw-rounded-xl 
+                                    hover:tw-shadow-lg dark:tw-shadow-[#171717] tw-duration-300 tw-transition-all
+                                  tw-p-8 tw-group/card"
+                        >
+                            <div class="tw-text-4xl max-md:tw-text-2xl">
+                                <i class="bi bi-cloud-arrow-up"></i>
+                            </div>
+
+                            <div class="tw-flex tw-flex-col tw-gap-4">
+                                <h3 class="tw-text-2xl max-md:tw-text-xl">
+                                    SaaS Platform Development
+                                </h3>
+                                <p class="tw-text-gray-800 dark:tw-text-gray-100 max-md:tw-text-sm">
+                                    Multi-tenant SaaS apps with proper user auth, admin panels, and billing — built to scale, not scream.
+
+                                </p>
+
+                                <div class="tw-mt-auto tw-flex tw-gap-2 tw-underline tw-underline-offset-4">
+                                    <span>Learn more</span>
+                                    <i class="bi bi-arrow-up-right group-hover/card:tw--translate-y-1
+                                                group-hover/card:tw-translate-x-1 tw-duration-300 tw-transition-transform"></i>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="reveal-up tw-h-[240px] tw-w-[450px] max-md:tw-w-full">
+                        <a href="#GetInTouch"
+                            class="tw-flex tw-w-full tw-h-full tw-gap-8 tw-rounded-xl
+                                 hover:tw-shadow-lg dark:tw-shadow-[#171717] tw-duration-300 tw-transition-all tw-p-8 tw-group/card"
+                        >
+                            <div class="tw-text-4xl max-md:tw-text-2xl">
+                                <i class="bi bi-robot"></i>
+                            </div>
+
+                            <div class="tw-flex tw-flex-col tw-gap-4">
+                                <h3 class="tw-text-2xl max-md:tw-text-xl">
+                                    AI & Intelligent System Integration
+                                </h3>
+                                <p class="tw-text-gray-800 dark:tw-text-gray-100 max-md:tw-text-sm">
+                                    Plug in GPTs, LLMs, and custom automations that do the thinking — so your product doesn't stay dumb.
+                                </p>
+
+                                <div class="tw-mt-auto tw-flex tw-gap-2 tw-underline tw-underline-offset-4">
+                                    <span>Learn more</span>
+                                    <i class="bi bi-arrow-up-right group-hover/card:tw--translate-y-1
+                                                group-hover/card:tw-translate-x-1 tw-duration-300 tw-transition-transform"></i>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="reveal-up tw-h-[240px] tw-w-[450px] max-md:tw-w-full">
+                        <a href="#GetInTouch"
+                            class="tw-flex tw-w-full tw-h-full tw-gap-8 tw-rounded-xl 
+                                    hover:tw-shadow-lg dark:tw-shadow-[#171717] tw-duration-300 
+                                    tw-transition-all dark:tw-shadow-[#171717] tw-p-8 tw-group/card"
+                        >
+                            <div class="tw-text-4xl max-md:tw-text-2xl">
+                                <i class="bi bi-layers"></i>
+                            </div>
+
+                            <div class="tw-flex tw-flex-col tw-gap-4">
+                                <h3 class="tw-text-2xl max-md:tw-text-xl">
+                                    Full-Stack Web Apps
+                                </h3>
+                                <p class="tw-text-gray-800 dark:tw-text-gray-100 max-md:tw-text-sm">
+                                    Frontends that look sharp. Backends that don't crash. Everything tied together like it's meant to be.
+                                </p>
+
+                                <div class="tw-mt-auto tw-flex tw-gap-2 tw-underline tw-underline-offset-4">
+                                    <span>Learn more</span>
+                                    <i class="bi bi-arrow-up-right group-hover/card:tw--translate-y-1
+                                                group-hover/card:tw-translate-x-1 tw-duration-300 tw-transition-transform"></i>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="reveal-up tw-h-[240px] tw-w-[450px] max-md:tw-w-full">
+                        <a href="#GetInTouch"
+                            class="tw-flex tw-w-full dark:tw-shadow-[#171717] tw-h-full tw-gap-8 tw-rounded-xl  hover:tw-shadow-lg tw-duration-300 
+                            tw-transition-all tw-p-8 tw-group/card"
+                        >
+                            <div class="tw-text-4xl max-md:tw-text-2xl">
+                                <i class="bi bi-phone"></i>
+                            </div>
+
+                            <div class="tw-flex tw-flex-col tw-gap-4">
+                                <h3 class="tw-text-2xl max-md:tw-text-xl">
+                                    Mobile App Development
+                                </h3>
+                                <p class="tw-text-gray-800 dark:tw-text-gray-100 max-md:tw-text-sm">
+                                    One codebase. Two platforms. Zero excuses. We build fast, beautiful apps that just work — iOS or Android.
+                                </p>
+
+                                <div class="tw-mt-auto tw-flex tw-gap-2 tw-underline tw-underline-offset-4">
+                                    <span>Learn more</span>
+                                    <i class="bi bi-arrow-up-right group-hover/card:tw--translate-y-1
+                                                group-hover/card:tw-translate-x-1 tw-duration-300 tw-transition-transform"></i>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <div class="reveal-up tw-h-[240px] tw-w-[450px] max-md:tw-w-full">
+                        <a href="#GetInTouch"
+                            class="tw-flex tw-w-full tw-h-full tw-gap-8 tw-rounded-xl dark:tw-shadow-[#171717] hover:tw-shadow-lg tw-duration-300 
+                                tw-transition-all tw-p-8 tw-group/card"
+                        >
+                            <div class="tw-text-4xl max-md:tw-text-2xl">
+                                <i class="bi bi-mortarboard"></i>
+                            </div>
+
+                            <div class="tw-flex tw-flex-col tw-gap-4">
+                                <h3 class="tw-text-2xl max-md:tw-text-xl">
+                                    Academic & Personal Projects
+                                </h3>
+                                <p class="tw-text-gray-800 dark:tw-text-gray-100 max-md:tw-text-sm">
+                                    Final-year project? Side hustle? Doesn't matter. We'll build it like a real product, not a college assignment.
+                                </p>
+
+                                <div class="tw-mt-auto tw-flex tw-gap-2 tw-underline tw-underline-offset-4">
+                                    <span>Learn more</span>
+                                    <i class="bi bi-arrow-up-right group-hover/card:tw--translate-y-1
+                                                group-hover/card:tw-translate-x-1 tw-duration-300 tw-transition-transform"></i>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+
+                            </div>
+                        </a>
+                    </div>
+
+                </div>
+
+                
+            </div>
+        </section>
+
+
+         <section id="WhyChooseProjectory"
+    class="tw-relative tw-flex tw-w-full tw-min-h-[110vh] max-md:tw-min-h-[80vh] tw-flex-col tw-place-content-center tw-place-items-center tw-overflow-hidden tw-pt-[100px]">
+
+    <div class="tw-w-full max-lg:tw-max-w-full tw-place-content-center tw-items-center 
+                tw-flex tw-flex-col tw-max-w-[80%] tw-gap-4 tw-p-4">
+
+      <h3 class="reveal-up tw-text-6xl tw-font-medium max-md:tw-text-3xl tw-text-center tw-leading-normal">
+        Why choose Projectory?
+      </h3>
+
+      <div class="tw-mt-8 tw-relative tw-gap-10 tw-p-4 tw-grid tw-place-items-center tw-grid-cols-3 max-lg:tw-flex max-lg:tw-flex-col">
+
+
+
+                    <div class="reveal-up  tw-w-[350px] tw-border-[1px] tw-h-[400px] tw-rounded-md tw-place-items-center tw-p-4
+                                 tw-bg-[#f2f3f4] max-md:tw-w-[320px] dark:tw-bg-[#141414] dark:tw-border-[#1f2123] tw-flex tw-flex-col tw-gap-3">
+
+                        <div class="tw-w-full tw-h-[250px]
+                                    tw-p-4
+                                    tw-rounded-xl 
+                                     tw-backdrop-blur-2xl
+                                     tw-overflow-hidden tw-flex tw-place-content-center">
+                            <img src="./assets/images/home/13.gif" 
+                                    alt="Prompt library" class="tw-w-auto tw-h-full tw-object-contain">
+                        </div>
+                        <h3 class="tw-text-2xl">
+                            7-Day Delivery Promise
+                        </h3>
+                        <p class="tw-text-gray-700 dark:tw-text-gray-300 tw-px-4 tw-text-center tw-text-sm">
+                            We ship working software — MVPs or academic projects — in as little as a week. Fast doesn’t mean dirty.
+                        </p>
+                    </div>
+                    
+                    <div class="reveal-up tw-w-[350px] max-md:tw-w-[320px] tw-border-[1px] tw-h-[400px] tw-rounded-md tw-place-items-center tw-p-4
+                                 tw-bg-[#f2f3f4] dark:tw-bg-[#141414] dark:tw-border-[#1f2123] tw-flex tw-flex-col tw-gap-3">
+
+                        <div class="tw-w-full tw-h-[250px]
+                                    tw-p-4
+                                    tw-rounded-xl 
+                                     tw-backdrop-blur-2xl
+                                     tw-overflow-hidden tw-flex tw-place-content-center">
+                            <img src="./assets/images/home/new1.gif" 
+                                    alt="Web search" class="tw-w-auto tw-h-full tw-object-contain">
+                        </div>
+                        <h3 class="tw-text-2xl">
+                            10× Better Value
+                        </h3>
+                        <p class="tw-text-gray-700 dark:tw-text-gray-300 tw-px-4 tw-text-center tw-text-sm">
+                            Premium software, startup-grade code — with pricing that undercuts market norms, not quality. 
+                        </p>
+                    </div>
+
+                    <div class="reveal-up tw-w-[350px] max-md:tw-w-[320px] tw-border-[1px] tw-h-[400px] tw-rounded-lg tw-place-items-center tw-p-4
+                                 tw-bg-[#f2f3f4] dark:tw-bg-[#141414] dark:tw-border-[#1f2123] tw-flex tw-flex-col tw-gap-3">
+
+                        <div class="tw-w-full tw-h-[250px]
+                                    tw-p-4
+                                    tw-rounded-xl 
+                                     tw-backdrop-blur-2xl
+                                     tw-overflow-hidden tw-flex tw-place-content-center">
+                            <img src="./assets/images/home/tech.gif" 
+                                    alt="Image generation" class="tw-w-auto tw-h-full tw-object-contain">
+                        </div>
+                        <h3 class="tw-text-2xl">
+                             24×7 Dev Support
+                        </h3>
+                        <p class="tw-text-gray-700 dark:tw-text-gray-300 tw-px-4 tw-text-center tw-text-sm">
+                            Talk to real devs. No ticketing hell. WhatsApp, call, or meet — we’re here, even after deployment.
+                        </p>
+                    </div>
+
+                    <div class="reveal-up tw-w-[350px] max-md:tw-w-[320px] tw-border-[1px] tw-h-[400px] tw-rounded-lg tw-place-items-center tw-p-4
+                                 tw-bg-[#f2f3f4] dark:tw-bg-[#141414] dark:tw-border-[#1f2123] tw-flex tw-flex-col tw-gap-3">
+
+                        <div class="tw-w-full tw-h-[250px]
+                                    tw-p-4
+                                     tw-rounded-xl 
+                                     tw-backdrop-blur-2xl
+                                     tw-overflow-hidden tw-flex tw-place-content-center">
+                            <img src="./assets/images/home/14.gif" 
+                                    alt="History" class="tw-w-auto tw-h-full tw-object-contain">
+                        </div>
+                        <h3 class="tw-text-2xl">
+                            Design + Dev Under One Roof
+                        </h3>
+                        <p class="tw-text-gray-700 dark:tw-text-gray-300 tw-px-4 tw-text-center tw-text-sm">
+                           No need to juggle Figma and Firebase separately. We deliver frontend polish and backend performance — together.
+                        </p>
+                    </div>
+
+                    <div class="reveal-up tw-w-[350px] max-md:tw-w-[320px] tw-border-[1px] tw-h-[400px] tw-rounded-lg tw-place-items-center tw-p-4
+                                 tw-bg-[#f2f3f4] dark:tw-bg-[#141414] dark:tw-border-[#1f2123] tw-flex tw-flex-col tw-gap-3">
+
+                        <div class="tw-w-full tw-h-[250px]
+                                    tw-p-4
+                                    tw-rounded-xl 
+                                     tw-backdrop-blur-2xl
+                                     tw-overflow-hidden tw-flex tw-place-content-center">
+                            <img src="./assets/images/home/15.gif" 
+                                    alt="Import content" class="tw-w-auto tw-h-full tw-object-contain">
+                        </div>
+                        <h3 class="tw-text-2xl">
+                            Production-Grade Codebases
+                        </h3>
+                        <p class="tw-text-gray-700 dark:tw-text-gray-300 tw-px-4 tw-text-center tw-text-sm">
+                            We don’t hand over toy demos. Every build is scalable, modular, and ready to handle real traffic or faculty reviews.
+                        </p>
+                    </div>
+
+                    <div class="reveal-up tw-w-[350px] max-md:tw-w-[320px] tw-border-[1px] tw-h-[400px] tw-rounded-lg tw-place-items-center tw-p-4
+                                 tw-bg-[#f2f3f4] dark:tw-bg-[#141414] dark:tw-border-[#1f2123] tw-flex tw-flex-col tw-gap-3">
+
+                        <div class="tw-w-full tw-h-[250px]
+                                    tw-p-4
+                                    tw-rounded-xl 
+                                     tw-backdrop-blur-2xl
+                                     tw-overflow-hidden tw-flex tw-place-content-center">
+                            <img src="./assets/images/home/time.gif" 
+                                    alt="Multilingual" class="tw-w-auto tw-h-full tw-object-contain">
+                        </div>
+                        <h3 class="tw-text-2xl">
+                            Built to Last
+                        </h3>
+                        <p class="tw-text-gray-700 dark:tw-text-gray-300 tw-px-4 tw-text-center tw-text-sm">
+                            Every line of code is architected for the long haul — scalable, maintainable, and production-grade from day one.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <body class="bg-white dark:bg-black">
+    <section class="tw-flex tw-min-h-[100vh] tw-w-full tw-flex-col tw-place-content-center tw-place-items-center tw-p-[2%]" id="WhatOurClientsSay">
+        <h3 class="reveal-up tw-text-6xl tw-font-medium tw-text-center max-md:tw-text-3xl">
+            What Our Clients Say
+        </h3>
+        
+        <!-- Testimonials -->
+        <div class="tw-mt-20 tw-gap-10 tw-space-y-8 max-md:tw-columns-1 lg:tw-columns-2 xl:tw-columns-3">
+            <div class="reveal-up testimonial-card stagger-animation tw-flex tw-h-fit tw-w-[350px] tw-break-inside-avoid 
+                        tw-flex-col tw-gap-4 tw-rounded-2xl tw-border-[1px] 
+                        tw-bg-[#f6f7fb] dark:tw-bg-[#080808] dark:tw-border-[#1f2123] tw-p-6 max-lg:tw-w-[320px]"
+                 style="--index: 0">   
+                <div class="quote-mark">"</div>
+                <div class="tw-flex tw-flex-col tw-gap-2">
+                    <div class="tw-font-bold tw-text-lg">Aarav Mehta</div>
+                    <div class="tw-text-gray-600 dark:tw-text-gray-400 tw-text-sm tw-font-medium">Manager, Ekta Foundation</div>
+                </div>
+                <p class="testimonial-text tw-text-gray-800 dark:tw-text-gray-200 tw-leading-relaxed tw-text-left">
+                    Worked with many agencies before, but gotta say one of the best experiences with Projectory. Seamless execution, guys. Keep it up!
+                </p>
+            </div>
+
+            <div class="reveal-up testimonial-card stagger-animation tw-flex tw-h-fit tw-w-[350px] tw-break-inside-avoid 
+                        tw-flex-col tw-gap-4 tw-rounded-2xl tw-border-[1px] 
+                        tw-bg-[#f6f7fb] dark:tw-bg-[#080808] dark:tw-border-[#1f2123] tw-p-6 max-lg:tw-w-[320px]"
+                 style="--index: 1">   
+                <div class="quote-mark">"</div>
+                <div class="tw-flex tw-flex-col tw-gap-2">
+                    <div class="tw-font-bold tw-text-lg">Shruti Chauhan</div>
+                    <div class="tw-text-gray-600 dark:tw-text-gray-400 tw-text-sm tw-font-medium">Final Year Student, UPES</div>
+                </div>
+                <p class="testimonial-text tw-text-gray-800 dark:tw-text-gray-200 tw-leading-relaxed tw-text-left">
+                    They handled my entire project — frontend, backend, report, everything. Felt like I had a personal dev team. Got great feedback from my prof too.
+                </p>
+            </div>
+
+            <div class="reveal-up testimonial-card stagger-animation tw-flex tw-h-fit tw-w-[350px] tw-break-inside-avoid 
+                        tw-flex-col tw-gap-4 tw-rounded-2xl tw-border-[1px] 
+                        tw-bg-[#f6f7fb] dark:tw-bg-[#080808] dark:tw-border-[#1f2123] tw-p-6 max-lg:tw-w-[320px]"
+                 style="--index: 2">   
+                <div class="quote-mark">"</div>
+                <div class="tw-flex tw-flex-col tw-gap-2">
+                    <div class="tw-font-bold tw-text-lg">Manan Arora</div>
+                    <div class="tw-text-gray-600 dark:tw-text-gray-400 tw-text-sm tw-font-medium">E-Cell, IIT Delhi</div>
+                </div>
+                <p class="testimonial-text tw-text-gray-800 dark:tw-text-gray-200 tw-leading-relaxed tw-text-left">
+                    Great execution and on-time delivery by Projectory. Loved the dedication and how professional the whole team was throughout.🔥
+                </p>
+            </div>
+
+            <div class="reveal-up testimonial-card stagger-animation tw-flex tw-h-fit tw-w-[350px] tw-break-inside-avoid 
+                        tw-flex-col tw-gap-4 tw-rounded-2xl tw-border-[1px] 
+                        tw-bg-[#f6f7fb] dark:tw-bg-[#080808] dark:tw-border-[#1f2123] tw-p-6 max-lg:tw-w-[320px]"
+                 style="--index: 3">   
+                <div class="quote-mark">"</div>
+                <div class="tw-flex tw-flex-col tw-gap-2">
+                    <div class="tw-font-bold tw-text-lg">Karan Singh</div>
+                    <div class="tw-text-gray-600 dark:tw-text-gray-400 tw-text-sm tw-font-medium">Freelance, Video Editor</div>
+                </div>
+                <p class="testimonial-text tw-text-gray-800 dark:tw-text-gray-200 tw-leading-relaxed tw-text-left">
+                    You guys literally brought my portfolio to life. Super clean work — loved the energy and quality
+                </p>
+            </div>
+
+            <div class="reveal-up testimonial-card stagger-animation tw-flex tw-h-fit tw-w-[350px] tw-break-inside-avoid 
+                        tw-flex-col tw-gap-4 tw-rounded-2xl tw-border-[1px] 
+                        tw-bg-[#f6f7fb] dark:tw-bg-[#080808] dark:tw-border-[#1f2123] tw-p-6 max-lg:tw-w-[320px]"
+                 style="--index: 4">   
+                <div class="quote-mark">"</div>
+                <div class="tw-flex tw-flex-col tw-gap-2">
+                    <div class="tw-font-bold tw-text-lg">Meena Kapoor</div>
+                    <div class="tw-text-gray-600 dark:tw-text-gray-400 tw-text-sm tw-font-medium">Founder, Crystal Clothings</div>
+                </div>
+                <p class="testimonial-text tw-text-gray-800 dark:tw-text-gray-200 tw-leading-relaxed tw-text-left">
+                    The brand's off to a great start big thanks to Projectory. Loved the energy, the speed, and how everyone actually cared. Solid teamwork start to finish
+                </p>
+            </div>
+
+            <div class="reveal-up testimonial-card stagger-animation tw-flex tw-h-fit tw-w-[350px] tw-break-inside-avoid 
+                        tw-flex-col tw-gap-4 tw-rounded-2xl tw-border-[1px] 
+                        tw-bg-[#f6f7fb] dark:tw-bg-[#080808] dark:tw-border-[#1f2123] tw-p-6 max-lg:tw-w-[320px]"
+                 style="--index: 5">   
+                <div class="quote-mark">"</div>
+                <div class="tw-flex tw-flex-col tw-gap-2">
+                    <div class="tw-font-bold tw-text-lg">Sooryansh Rajput</div>
+                    <div class="tw-text-gray-600 dark:tw-text-gray-400 tw-text-sm tw-font-medium">MNNIT, Allahabad</div>
+                </div>
+                <p class="testimonial-text tw-text-gray-800 dark:tw-text-gray-200 tw-leading-relaxed tw-text-left">
+                    Professor was shocked with the level of work I submitted. The guys even helped me prep for my viva. Honestly, a great platform.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Animate testimonials on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationDelay = `${entry.target.style.getPropertyValue('--index') * 0.1}s`;
+                    entry.target.classList.add('reveal-up');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.testimonial-card').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
+
+  <section
+    class="tw-mt-5 tw-flex tw-w-full tw-flex-col tw-gap-6 tw-place-items-center tw-p-[2%]"
+    id="pricing"
+  >
+    <h3
+      class="reveal-up tw-text-6xl tw-font-medium max-md:tw-text-xl"
+    >
+      Choose the right plan for you
+    </h3>
+    <!-- pricing -->
+    <div
+      class="tw-mt-10 tw-flex tw-flex-wrap tw-place-content-center tw-gap-8 max-lg:tw-flex-col"
+    >
+      <!-- Student Plan -->
+      <div
+        class="reveal-up tw-flex tw-w-[380px] tw-flex-col tw-place-items-center tw-gap-4 tw-rounded-2xl tw-border-[1px]
+                tw-border-outlineColor tw-bg-white dark:tw-bg-[#080808] dark:tw-border-[#1f2123] tw-p-8 tw-shadow-xl max-lg:tw-w-[340px] tw-transition-all tw-duration-300 hover:tw-shadow-2xl hover:tw-scale-[1.02]"
+      >
+        <div class="tw-flex tw-items-center tw-justify-between tw-w-full tw-mb-2">
+          <div class="tw-flex tw-items-center tw-gap-3">
+            <div class="tw-w-12 tw-h-12 tw-bg-blue-100 dark:tw-bg-blue-900 tw-rounded-xl tw-flex tw-items-center tw-justify-center">
+              <i class="bi bi-mortarboard tw-text-blue-600 dark:tw-text-blue-400 tw-text-xl"></i>
+            </div>
+            <h3 class="tw-text-2xl tw-font-semibold">Student Plan</h3>
+          </div>
+          <span class="tw-bg-green-100 dark:tw-bg-green-900 tw-text-green-700 dark:tw-text-green-300 tw-px-3 tw-py-1 tw-rounded-full tw-text-sm tw-font-medium">
+            Academic
+          </span>
+        </div>
+        
+        <div class="tw-text-center tw-mb-4">
+          <div class="tw-text-5xl tw-font-light tw-mb-2">₹849</div>
+          <p class="tw-text-gray-600 dark:tw-text-gray-300 tw-text-base">
+            Tailored solutions for academic excellence
+          </p>
+        </div>
+        
+        <hr class="tw-w-full tw-border-gray-200 dark:tw-border-gray-700" />
+        
+        <ul class="tw-mt-4 tw-flex tw-flex-col tw-gap-4 tw-text-base tw-text-gray-800 dark:tw-text-gray-200 tw-w-full">
+          <li class="tw-flex tw-items-start tw-gap-3">
+            <i class="bi bi-check-circle-fill tw-text-green-500 tw-mt-0.5 tw-flex-shrink-0"></i>
+            <span>Complete Web App/AI Project with clean, production-ready code</span>    
+          </li>
+          <li class="tw-flex tw-items-start tw-gap-3">
+            <i class="bi bi-check-circle-fill tw-text-green-500 tw-mt-0.5 tw-flex-shrink-0"></i>
+            <span>7-day delivery guarantee with presentation-ready documentation</span>    
+          </li>
+          <li class="tw-flex tw-items-start tw-gap-3">
+            <i class="bi bi-check-circle-fill tw-text-green-500 tw-mt-0.5 tw-flex-shrink-0"></i>
+            <span>Comprehensive viva prep support with detailed code explanations</span>    
+          </li>
+          <li class="tw-flex tw-items-start tw-gap-3">
+            <i class="bi bi-check-circle-fill tw-text-green-500 tw-mt-0.5 tw-flex-shrink-0"></i>
+            <span>Project setup assistance and deployment guidance</span>    
+          </li>
+          <li class="tw-flex tw-items-start tw-gap-3">
+            <i class="bi bi-check-circle-fill tw-text-green-500 tw-mt-0.5 tw-flex-shrink-0"></i>
+            <span>Optimized for A+ grade achievements and academic success</span>    
+          </li>
+        </ul>
+        
+<a
+  href="https://wa.me/919027107868"
+  class="btn tw-mt-auto !tw-w-full tw-transition-all tw-duration-300 
+         hover:tw-scale-[1.02] tw-text-white tw-bg-transparent 
+         tw-border tw-border-white tw-rounded-xl tw-py-3 tw-font-medium"
+>
+  Get Started
+</a>
+      </div>
+      
+      <!-- Premium Plan -->
+      <div
+        class="reveal-up tw-flex tw-w-[380px] tw-flex-col tw-place-items-center tw-gap-4 tw-rounded-2xl tw-border-2
+                tw-border-blue-500 tw-bg-white dark:tw-bg-[#080808] dark:tw-border-blue-400 tw-p-8 tw-shadow-2xl max-lg:tw-w-[340px] tw-transition-all tw-duration-300 hover:tw-shadow-3xl hover:tw-scale-[1.02] tw-relative"
+      >
+        <div class="tw-flex tw-items-center tw-justify-between tw-w-full tw-mb-2">
+          <div class="tw-flex tw-items-center tw-gap-3">
+            <div class="tw-w-12 tw-h-12 tw-bg-gradient-to-r tw-from-blue-500 tw-to-purple-600 tw-rounded-xl tw-flex tw-items-center tw-justify-center">
+              <i class="bi bi-rocket-takeoff tw-text-white tw-text-xl"></i>
+            </div>
+            <h3 class="tw-text-2xl tw-font-semibold">Startup Plan</h3>
+          </div>
+          <span class="tw-bg-blue-100 dark:tw-bg-blue-900 tw-text-blue-700 dark:tw-text-blue-300 tw-px-3 tw-py-1 tw-rounded-full tw-text-sm tw-font-medium">
+            Founders Kickstart
+          </span>
+        </div>
+        
+<div class="tw-text-center tw-mb-4">
+    <div class="tw-text-5xl tw-font-light tw-mb-2">
+        <span class="tw-text-2xl tw-text-gray-400 tw-block">Starts at</span>
+        <span class="tw-bg-gradient-to-r tw-from-blue-600 tw-to-purple-600 tw-bg-clip-text tw-text-transparent">
+            ₹7499
+        </span>
+    </div>
+    <p class="tw-text-gray-600 dark:tw-text-gray-300 tw-text-base">
+        For founders who want industry-grade software without burning cash.
+    </p>
+</div>
+        
+        <hr class="tw-w-full tw-border-gray-200 dark:tw-border-gray-700" />
+        
+        <ul class="tw-mt-4 tw-flex tw-flex-col tw-gap-4 tw-text-base tw-text-gray-800 dark:tw-text-gray-100 tw-w-full">
+          <li class="tw-flex tw-items-start tw-gap-3">
+            <i class="bi bi-check-circle-fill tw-text-blue-500 tw-mt-0.5 tw-flex-shrink-0"></i>
+            <span>Fully custom apps, built end-to-end for your startup's needs.</span>    
+          </li>
+          <li class="tw-flex tw-items-start tw-gap-3">
+            <i class="bi bi-check-circle-fill tw-text-blue-500 tw-mt-0.5 tw-flex-shrink-0"></i>
+            <span>Auth, payments, admin panel, user flows — all integrated.</span>    
+          </li>
+          <li class="tw-flex tw-items-start tw-gap-3">
+            <i class="bi bi-check-circle-fill tw-text-blue-500 tw-mt-0.5 tw-flex-shrink-0"></i>
+            <span>Includes responsive UI, UX, and brand-aligned design.</span>    
+          </li>
+          <li class="tw-flex tw-items-start tw-gap-3">
+            <i class="bi bi-check-circle-fill tw-text-blue-500 tw-mt-0.5 tw-flex-shrink-0"></i>
+            <span>Weekly builds with review, iteration, and feedback loops.</span>    
+          </li>
+          <li class="tw-flex tw-items-start tw-gap-3">
+            <i class="bi bi-check-circle-fill tw-text-blue-500 tw-mt-0.5 tw-flex-shrink-0"></i>
+            <span>180-days post-launch support for fixes, upgrades, and scaling.</span>    
+          </li>
+        </ul>
+        
+        <a
+          href="https://wa.me/919027107868"
+          class="btn tw-mt-auto !tw-w-full tw-transition-all tw-duration-300 hover:tw-scale-[1.02] tw-bg-gradient-to-r tw-from-blue-500 tw-to-purple-600 tw-text-white tw-border-0 tw-rounded-xl tw-py-4 tw-font-medium tw-shadow-lg hover:tw-shadow-xl"
+        >
+          Get a Free Quote →
+        </a>
+      </div>
+    </section>
+
+    <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Form - Dashboard Style</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+
+  </style>
+</head>
+
+<body class="bg-black text-white min-h-screen">
+  <section id="GetInTouch" class="flex items-center justify-center px-4 py-12">
+    <div class="w-full max-w-2xl mx-auto">
+      <!-- Header -->
+      <div class="text-center mb-8 fade-in">
+        <h2 class="text-5xl font-bold mb-2 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+          Get in Touch
+        </h2>
+        <p class="text-gray-400">Let's discuss your project and bring your ideas to life.</p>
+      </div>
+
+      <!-- Form -->
+      <form action="https://formspree.io/f/mvgrddpr" method="POST"
+        class="w-full bg-black border border-gray-800 shadow-2xl rounded-3xl p-10 flex flex-col gap-6 fade-in">
+
+        <!-- Name Field -->
+        <div class="form-field field-focus-ring">
+          <label for="name" class="block text-sm font-medium text-gray-300 mb-2">
+            Full Name <span class="text-red-400">*</span>
+          </label>
+          <input type="text" id="name" name="name" required
+            class="input-field w-full px-4 py-3 bg-black border border-gray-700 rounded-2xl text-white placeholder-gray-500 focus:outline-none focus:bg-black"
+            placeholder="Enter your full name" />
+        </div>
+
+        <!-- Email Field -->
+        <div class="form-field field-focus-ring">
+          <label for="email" class="block text-sm font-medium text-gray-300 mb-2">
+            Email Address <span class="text-red-400">*</span>
+          </label>
+          <input type="email" id="email" name="email" required
+            class="input-field w-full px-4 py-3 bg-black border border-gray-700 rounded-2xl text-white placeholder-gray-500 focus:outline-none focus:bg-black"
+            placeholder="your.email@example.com" />
+        </div>
+
+        <!-- Plan Selector -->
+        <div class="form-field">
+          <label class="block text-sm font-medium text-gray-300 mb-3">
+            I'm interested in <span class="text-red-400">*</span>
+          </label>
+          <div class="grid grid-cols-2 gap-3">
+            <!-- Student -->
+            <label class="radio-option cursor-pointer">
+              <input type="radio" name="plan_type" value="Student" class="sr-only peer" required />
+              <div
+                class="flex items-center justify-center p-4 border border-gray-700 rounded-2xl peer-checked:border-gray-600 peer-checked:bg-gray-800 hover:border-gray-600 hover:bg-gray-800/50 transition-all">
+                <div class="text-center">
+                  <div class="text-2xl mb-1">🎓</div>
+                  <div class="font-medium">Student Plan</div>
+                  <div class="text-xs text-gray-400">Academic projects</div>
+                </div>
+              </div>
+            </label>
+
+            <!-- Startup -->
+            <label class="radio-option cursor-pointer">
+              <input type="radio" name="plan_type" value="Startup" class="sr-only peer" required />
+              <div
+                class="flex items-center justify-center p-4 border border-gray-700 rounded-2xl peer-checked:border-gray-600 peer-checked:bg-gray-800 hover:border-gray-600 hover:bg-gray-800/50 transition-all">
+                <div class="text-center">
+                  <div class="text-2xl mb-1">🚀</div>
+                  <div class="font-medium">Startup Plan</div>
+                  <div class="text-xs text-gray-400">Business solutions</div>
+                </div>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- Message Field -->
+        <div class="form-field field-focus-ring">
+          <label for="message" class="block text-sm font-medium text-gray-300 mb-2">
+            Project Details <span class="text-red-400">*</span>
+          </label>
+          <textarea id="message" name="message" rows="5" required
+            class="input-field w-full px-4 py-3 bg-black border border-gray-700 rounded-2xl text-white placeholder-gray-500 focus:outline-none focus:bg-black resize-y min-h-[120px]"
+            placeholder="Tell us about your project requirements, timeline, and any specific features you need..."></textarea>
+        </div>
+
+        <!-- Submit -->
+        <button type="submit"
+          class="w-full py-4 px-6 bg-white text-black font-semibold rounded-2xl hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-500/30 transition-all duration-300 relative overflow-hidden">
+          <span class="relative z-10 flex items-center justify-center gap-2 text-black">
+            Send Message
+            <svg class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor"
+              stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </span>
+        </button>
+
+        <!-- Footer Notice -->
+        <p class="text-xs text-gray-500 text-center mt-2">
+          By submitting this form, you agree to our privacy policy. We'll get back to you within 12 hours.
+        </p>
+      </form>
+    </div>
+  </section>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const formFields = document.querySelectorAll('.form-field');
+      formFields.forEach((field, index) => {
+        field.style.animationDelay = `${0.1 * (index + 1)}s`;
+        field.classList.add('fade-in');
+      });
+
+      const form = document.querySelector('form');
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const originalText = submitBtn.innerHTML;
+
+      form.addEventListener('submit', function () {
+        submitBtn.innerHTML = `
+          <span class="relative z-10 flex items-center justify-center gap-2">
+              <svg class="animate-spin h-5 w-5" fill="none" viewBox="0 0 24 24">
+                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                  <path class="opacity-75" fill="currentColor"
+                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                  </path>
+              </svg>
+              Sending...
+          </span>
+        `;
+        submitBtn.disabled = true;
+      });
+    });
+  </script>
+</body>
+
+<footer class="relative bg-black border-t border-purple-900/20 overflow-hidden footer-font py-8 -mt-4">
+  <!-- Subtle gradient background effect -->
+  <div class="absolute inset-0 pointer-events-none">
+    <div class="absolute w-[800px] h-[800px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#6C4CF1]/5 blur-[100px] rounded-full"></div>
+  </div>
+
+  <div class="max-w-[1280px] mx-auto px-6">
+    <!-- Footer Content -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
+      <!-- Brand -->
+      <div class="flex flex-col items-start">
+        <!-- Logo -->
+        <div class="flex flex-col items-center md:items-start w-full mb-6">
+          <img alt="Projectory logo" class="h-12 w-auto mb-4" src="./assets/logo/logo.png" />
+          <p class="text-gray-400 text-center md:text-left">
+            Software and AI solutions — from enterprise systems to academic projects.<br />
+            Trusted for fast execution and scalable outcomes
+          </p>
+        </div>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="flex flex-col items-center md:items-end w-full">
+        <h3 class="text-white font-medium mb-4 text-center md:text-right">Contact Us</h3>
+        <ul class="flex flex-col gap-2 items-center md:items-end w-full">
+          <li class="text-gray-400 w-full flex justify-center md:justify-end">
+            <a href="mailto:contact@projectory.in" class="hover:text-white transition inline-flex items-center gap-2">
+              <i class="far fa-envelope"></i>
+              <span>contact@projectory.in</span>
+            </a>
+          </li>
+          <li class="text-gray-400 w-full flex justify-center md:justify-end items-center gap-2">
+            <i class="fas fa-phone-alt"></i>
+            <span>+91 9027107868</span>
+          </li>
+          <li class="w-full flex justify-center md:justify-end">
+            <a
+              href="https://wa.me/919027107868"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="WhatsApp Us"
+              class="btn tw-flex tw-gap-2 tw-px-4 tw-py-2 tw-transition-transform tw-duration-[0.3s] hover:tw-translate-x-2 items-center text-black bg-white dark:text-white dark:bg-black border border-gray-400 rounded-xl shadow"
+              style="min-width: 0; width: auto;"
+            >
+              <i class="bi bi-whatsapp text-xl"></i>
+              <span>WhatsApp Us</span>
+            </a>
+          </li>
+          <!-- Social Handles -->
+          <li class="w-full flex justify-center md:justify-end mt-2">
+            <div class="flex gap-4 items-center">
+              <a href="https://instagram.com/projectory.in" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="text-gray-400 hover:text-white transition text-2xl flex items-center justify-center">
+                <i class="bi bi-instagram"></i>
+              </a>
+              <a href="https://www.linkedin.com/company/buildwithprojectory" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="text-gray-400 hover:text-white transition text-2xl flex items-center justify-center">
+                <i class="bi bi-linkedin"></i>
+              </a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Divider -->
+    <div class="footer-divider mb-8"></div>
+
+    <!-- Bottom Footer -->
+    <div class="flex flex-col items-center justify-center text-center gap-4">
+      <p class="text-gray-400 text-sm">&copy; 2025 Projectory. All Rights Reserved.</p>
+      <div class="flex items-center gap-6 text-sm">
+        <a href="/tnc.html" class="text-purple-400 hover:text-white transition">Terms & Conditions</a>
+        
+        
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer-font {
+    font-family: 'Inter', sans-serif;
+  }
+
+  .footer-divider {
+    height: 1px;
+    background: linear-gradient(90deg,
+      rgba(170,170,170,0) 0%,
+      rgba(170,170,170,0.2) 50%,
+      rgba(170,170,170,0) 100%
+    );
+  }
+
+  /* Footer contact info alignment fix */
+  .footer-font ul li a, .footer-font ul li {
+    line-height: 1.6;
+  }
+  .footer-font .btn {
+    font-size: 1rem;
+    font-weight: 500;
+    box-shadow: none;
+  }
+  .footer-font .bi {
+    vertical-align: middle;
+    display: inline-block;
+  }
+  @media (max-width: 767px) {
+    .footer-font ul li {
+      justify-content: center !important;
+      text-align: center !important;
+    }
+  }
+</style>
+
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/gsap.min.js"
+    integrity="sha512-B1lby8cGcAUU3GR+Fd809/ZxgHbfwJMp0jLTVfHiArTuUt++VqSlJpaJvhNtRf3NERaxDNmmxkdx2o+aHd4bvw=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+></script>
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/ScrollTrigger.min.js"
+    integrity="sha512-AY2+JxnBETJ0wcXnLPCcZJIJx0eimyhz3OJ55k2Jx4RtYC+XdIi2VtJQ+tP3BaTst4otlGG1TtPJ9fKrAUnRdQ=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.10/typed.min.js" integrity="sha512-hIlMpy2enepx9maXZF1gn0hsvPLerXoLHdb095CmRY5HG3bZfN7XPBZ14g+TUDH1aGgfLyPHmY9/zuU53smuMw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="./scripts/components.js"></script>
+<script src="./index.js"></script>
+
+<!-- By Paul: https://github.com/PaulleDemon -->
+</html>
+
